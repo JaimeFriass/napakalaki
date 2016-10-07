@@ -32,8 +32,7 @@ public class TestNapakalaki {
         prize = new Prize(1,1);
         monstruos.add(new Monster("Tenochtitlan", 2, badConsequence, prize));
         
-        
-  
+       
     }
 
     
