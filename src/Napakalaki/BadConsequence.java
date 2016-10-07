@@ -43,6 +43,22 @@ public class BadConsequence {
         this.specificVisibleTreasures = tVisible;
     }
     
+    BadConsequence(String text, int levels, int nVisible, ArrayList<TreasureKind> tHidden)
+    {
+        this.text = text;
+        this.levels = levels;
+        this.specificHiddenTreasures = tHidden;
+        nVisibleTreasures = nVisible;
+    }
+    
+    BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible, int nHidden)
+    {
+        this.text = text;
+        this.levels = levels;
+        nHiddenTreasures = nHidden;
+        this.specificVisibleTreasures = tVisible;
+    }
+    
     String getText(){ return text; }
     
     void setText(String text) { this.text = text; }

@@ -22,6 +22,14 @@ public class Monster {
         this.bc = bc;
         this.prize = prize;
     }
+    // Constructor de copia
+    public Monster(Monster monstruo)
+    {
+        this.name = monstruo.name;
+        this.combatLevel = monstruo.combatLevel;
+        this.bc = monstruo.bc;
+        this.prize = monstruo.prize;
+    }
     
     String getName() { return name; }
     
