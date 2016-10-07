@@ -1,3 +1,2 @@
-# napakalaki
+# Napakalaki - Práctica PDOO
 
-Práctica 1 - PDOO
