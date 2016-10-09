@@ -39,6 +39,11 @@ public class Monster {
     
     Prize getPrize() { return prize; }
     
+    boolean onlyLoseLevels()
+    {
+        return bc.onlyLoseLevels();
+    }
+    
     @Override
     public String toString()
     {

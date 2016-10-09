@@ -79,6 +79,14 @@ public class BadConsequence {
     
     ArrayList<TreasureKind> getSpecificVisibleTreasures() { return specificVisibleTreasures; }
     
+    boolean onlyLoseLevels()
+    {
+        if (levels > 0 && nVisibleTreasures == 0 && nHiddenTreasures == 0)
+            return true;
+        else
+            return false;
+    }
+    
     @Override
     public String toString()
     {

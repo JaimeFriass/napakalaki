@@ -6,7 +6,6 @@
 package Napakalaki;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 /**
  * Clase de prueba de Napakalaki
  * @author jaimefrias
@@ -14,8 +13,45 @@ import java.util.Iterator;
 public class TestNapakalaki {
     public static ArrayList<Monster> monstruos = new ArrayList();
     
+    public static ArrayList<Monster> nivelSuperior(ArrayList<Monster> lista, int level)
+    {
+        ArrayList<Monster> devolver = new ArrayList<>();
+        int j = 0;
+        for (int i = 0; lista.size() > i; i++) {
+            if (lista.get(i).getCombatLevel() > level)
+            {
+                devolver.set(j, lista.get(i));
+                j++;
+            }
+        }
+        return devolver;
+    }
+    
+    public static ArrayList<Monster> onlyLoseLevels(ArrayList<Monster> lista)
+    {
+        ArrayList<Monster> devolver = new ArrayList<>();
+        int j = 0;
+        for (int i = 0; lista.size() > i; i++)
+        {
+            if (lista.get(i).onlyLoseLevels())
+            {
+                devolver.set(j, lista.get(i));
+                j++;
+            }
+        }
+        
+        return devolver;
+    }
+    
+    public static void imprimeMonstruos(ArrayList<Monster> lista)
+    {
+        lista.forEach((_item) -> {
+            System.out.println(lista.toString() + "/n");
+        });
+    }
     
     // Devuelve ArrayList con los monstruos que cumplan la condición especificada.
+    /*
     public static ArrayList<Monster> nivelSuperiorA(ArrayList<Monster> lista, int level)
     {
         ArrayList<Monster> devolver = new ArrayList<Monster>();
@@ -30,6 +66,12 @@ public class TestNapakalaki {
         
         return devolver;
     }
+    */
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args)
     {
         BadConsequence badConsequence = new BadConsequence("Pierdes tu armadura visible y otra oculta", 0,
@@ -134,10 +176,10 @@ public class TestNapakalaki {
         monstruos.add(new Monster("Bicéfalo", 21, badConsequence, prize));
         
         
+        System.out.println("Lista de monstruos con lvl mayor de 10\n");
+        ArrayList<Monster> lvlmayor = new ArrayList(nivelSuperior(monstruos, 10));
         
-        
-        
-        
+        System.out.println(lvlmayor);
     }
     
     
