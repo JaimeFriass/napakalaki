@@ -13,12 +13,14 @@ public class Prize {
     private int levels;
     private int treasures;
     
+    // CONSTRUCTOR
     Prize(int treasures, int levels)
     {
         this.levels = levels;
         this.treasures = treasures;
     }
     
+    // MÉTODOS PARA ACCEDER A LAS VARIABLES PRIVADAS
     int getTreasures()
     {
         return treasures;
@@ -38,6 +40,8 @@ public class Prize {
     {
         this.levels = levels;
     }
+    
+    // Método para pasar un premio a cadena de texto
     @Override
     public String toString()
     {

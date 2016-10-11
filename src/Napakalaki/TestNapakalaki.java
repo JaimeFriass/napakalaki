@@ -49,31 +49,10 @@ public class TestNapakalaki {
             System.out.println(lista.toString() + "/n");
         });
     }
-    
-    // Devuelve ArrayList con los monstruos que cumplan la condición especificada.
-    /*
-    public static ArrayList<Monster> nivelSuperiorA(ArrayList<Monster> lista, int level)
-    {
-        ArrayList<Monster> devolver = new ArrayList<Monster>();
-        Iterator iterator = lista.listIterator();
-        while(iterator.hasNext() )
-        {
-            if(iterator.next().getCombatLevel() > 10)
-            {
-                devolver.add(iterator.next());
-            }
-        }
-        
-        return devolver;
-    }
-    */
 
-    /**
-     *
-     * @param args
-     */
     public static void main(String[] args)
     {
+        // CREACIÓN DE MONSTRUOS //
         BadConsequence badConsequence = new BadConsequence("Pierdes tu armadura visible y otra oculta", 0,
             new ArrayList(Arrays.asList(TreasureKind.ARMOR)), 
             new ArrayList(Arrays.asList(TreasureKind.ARMOR)));
@@ -175,7 +154,7 @@ public class TestNapakalaki {
         prize = new Prize(2,1);
         monstruos.add(new Monster("Bicéfalo", 21, badConsequence, prize));
         
-        
+        // Imprime los monstruos con nivel mayor a 10 usando el método creado al principio.
         System.out.println("Lista de monstruos con lvl mayor de 10\n");
         ArrayList<Monster> lvlmayor = new ArrayList(nivelSuperior(monstruos, 10));
         
