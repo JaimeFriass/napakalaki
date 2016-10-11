@@ -97,11 +97,7 @@ public class BadConsequence {
 	boolean onlyLoseLevels() {
 		boolean correcto;
 		
-		if (levels > 0 && nVisibleTreasures == 0 && nHiddenTreasures == 0) {
-			correcto = true;
-		} else {
-			correcto = false;
-		}
+		correcto = levels > 0 && nVisibleTreasures == 0 && nHiddenTreasures == 0;
 		
 		return correcto;
 	}
