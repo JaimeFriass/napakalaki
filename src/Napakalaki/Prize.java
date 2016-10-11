@@ -10,44 +10,37 @@ package Napakalaki;
  * @author jaimefrias
  */
 public class Prize {
+
     private int levels;
     private int treasures;
-    
+
     // CONSTRUCTOR
-    Prize(int treasures, int levels)
-    {
+    Prize(int treasures, int levels) {
         this.levels = levels;
         this.treasures = treasures;
     }
-    
+
     // MÉTODOS PARA ACCEDER A LAS VARIABLES PRIVADAS
-    int getTreasures()
-    {
+    int getTreasures() {
         return treasures;
     }
-    
-    void setTreasures(int treasures)
-    {
+
+    void setTreasures(int treasures) {
         this.treasures = treasures;
     }
-    
-    int getLevel()
-    {
+
+    int getLevel() {
         return this.levels;
     }
-    
-    void setLevel(int levels)
-    {
+
+    void setLevel(int levels) {
         this.levels = levels;
     }
-    
+
     // Método para pasar un premio a cadena de texto
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "Treasures = " + Integer.toString(treasures) + " levels = " + Integer.toString(levels);
     }
-    
+
 }
-
-
