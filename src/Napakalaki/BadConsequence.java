@@ -95,11 +95,15 @@ public class BadConsequence {
 	}
 
 	boolean onlyLoseLevels() {
+		boolean correcto;
+		
 		if (levels > 0 && nVisibleTreasures == 0 && nHiddenTreasures == 0) {
-			return true;
+			correcto = true;
 		} else {
-			return false;
+			correcto = false;
 		}
+		
+		return correcto;
 	}
 
 	@Override
