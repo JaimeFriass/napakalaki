@@ -10,46 +10,49 @@ package Napakalaki;
  * @author jaimefrias
  */
 public class Monster {
-    private String name;
-    private int combatLevel;
-    private BadConsequence bc;
-    private Prize prize;
-    
-    Monster(String name, int level, BadConsequence bc, Prize prize)
-    {
-        this.name = name;
-        combatLevel = level;
-        this.bc = bc;
-        this.prize = prize;
-    }
-    // Constructor de copia
-    public Monster(Monster monstruo)
-    {
-        this.name = monstruo.name;
-        this.combatLevel = monstruo.combatLevel;
-        this.bc = monstruo.bc;
-        this.prize = monstruo.prize;
-    }
-    
-    String getName() { return name; }
-    
-    int getCombatLevel() { return combatLevel; }
-    
-    BadConsequence getBadConsequence() { return bc; }
-    
-    Prize getPrize() { return prize; }
-    
-    boolean onlyLoseLevels()
-    {
-        return bc.onlyLoseLevels();
-    }
-    
-    @Override
-    public String toString()
-    {
-       return "Name = " + name + " combatLevel = " + Integer.toString(combatLevel);
-    }
+
+	private String name;
+	private int combatLevel;
+	private BadConsequence bc;
+	private Prize prize;
+
+	Monster(String name, int level, BadConsequence bc, Prize prize) {
+		this.name = name;
+		combatLevel = level;
+		this.bc = bc;
+		this.prize = prize;
+	}
+	// Constructor de copia
+
+	public Monster(Monster monstruo) {
+		this.name = monstruo.name;
+		this.combatLevel = monstruo.combatLevel;
+		this.bc = monstruo.bc;
+		this.prize = monstruo.prize;
+	}
+
+	String getName() {
+		return name;
+	}
+
+	int getCombatLevel() {
+		return combatLevel;
+	}
+
+	BadConsequence getBadConsequence() {
+		return bc;
+	}
+
+	Prize getPrize() {
+		return prize;
+	}
+
+	boolean onlyLoseLevels() {
+		return bc.onlyLoseLevels();
+	}
+
+	@Override
+	public String toString() {
+		return "Name = " + name + " combatLevel = " + Integer.toString(combatLevel);
+	}
 }
-
-
-

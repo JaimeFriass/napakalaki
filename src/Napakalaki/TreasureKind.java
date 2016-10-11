@@ -10,5 +10,5 @@ package Napakalaki;
  * @author jaimefrias
  */
 public enum TreasureKind {
-    ARMOR, ONEHAND, BOTHHANDS, HELMET, SHOES
+	ARMOR, ONEHAND, BOTHHANDS, HELMET, SHOES
 }
