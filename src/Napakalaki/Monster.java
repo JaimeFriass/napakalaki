@@ -50,6 +50,14 @@ public class Monster {
 	boolean onlyLoseLevels() {
 		return bc.onlyLoseLevels();
 	}
+        
+        boolean winLevelsFrom(int lvl) {
+                return prize.winLevelsFrom(lvl);
+        }
+        
+        boolean loseTreasure(TreasureKind treasure, boolean visible) {
+                return bc.loseTreasure(treasure, visible);
+        }
 
 	@Override
 	public String toString() {

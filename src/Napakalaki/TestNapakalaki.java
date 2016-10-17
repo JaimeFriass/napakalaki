@@ -44,6 +44,31 @@ public class TestNapakalaki {
 		return devolver;
 	}
         
+        // Método para recorrer un array devolviendo los monstruos con buen rollo que implique niveles superior a 1.
+        public static ArrayList<Monster> winLevelsFrom(ArrayList<Monster> lista, int level) {
+            ArrayList<Monster> devolver = new ArrayList<>();
+            int j = 0;
+            for (int i = 0; lista.size() > i ; i++) {
+                if (lista.get(i).winLevelsFrom(level)) {
+                    devolver.set(j, lista.get(i));
+                    j++;
+                }
+            }
+            return devolver;
+        }
+        
+        public static ArrayList<Monster> loseTreasure(ArrayList<Monster> lista, TreasureKind treasure, boolean visible) {
+            ArrayList<Monster> devolver = new ArrayList<>();
+            int j = 0;
+            for (int i = 0; lista.size() > i ; i++) {
+                if (lista.get(i).loseTreasure(treasure, visible)) {
+                    devolver.set(j, lista.get(i));
+                    j++;
+                }
+            }
+            return devolver;
+        }
+        
         // Recorre el array imprimiendo cada uno de sus monstruos
 	public static void imprimeMonstruos(ArrayList<Monster> lista) {
 		lista.forEach((_item) -> {
