@@ -33,7 +33,9 @@ public class Prize {
 
 	void setLevel(int levels) {
 		this.levels = levels;
-	}
+        }
+
+	@Override
         
         boolean winLevelsFrom(int lvl) {
             if (levels > lvl)
@@ -42,7 +44,6 @@ public class Prize {
                 return false;
         }
 
-	@Override
 	public String toString() {
 		return "Treasures = " + Integer.toString(treasures) + " levels = " + Integer.toString(levels);
 	}
