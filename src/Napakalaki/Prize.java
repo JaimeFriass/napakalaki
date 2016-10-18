@@ -8,6 +8,7 @@ package Napakalaki;
 /**
  *
  * @author jaimefrias
+ * @author jesusjimsa
  */
 public class Prize {
 
@@ -33,17 +34,13 @@ public class Prize {
 
 	void setLevel(int levels) {
 		this.levels = levels;
-        }
+	}
+
+	boolean winLevelsFrom(int lvl) {
+		return levels > lvl;
+	}
 
 	@Override
-        
-        boolean winLevelsFrom(int lvl) {
-            if (levels > lvl)
-                return true;
-            else
-                return false;
-        }
-
 	public String toString() {
 		return "Treasures = " + Integer.toString(treasures) + " levels = " + Integer.toString(levels);
 	}
