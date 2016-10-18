@@ -96,31 +96,29 @@ public class BadConsequence {
 
 	boolean onlyLoseLevels() {
 		boolean correcto;
-		
-		if (levels > 0 && nVisibleTreasures == 0 && nHiddenTreasures == 0) {
-			correcto = true;
-		} else {
-			correcto = false;
-		}
-		
+
+		correcto = levels > 0 && nVisibleTreasures == 0 && nHiddenTreasures == 0;
+
 		return correcto;
 	}
-        
-        boolean loseTreasure(TreasureKind treasure, boolean visible) {
-            boolean lose = false;
-            if (visible) {
-                for (int i = 0; specificVisibleTreasures.size() > i ; i++) {
-                    if (specificVisibleTreasures.get(i) == treasure)
-                        lose = true;
-                }
-            } else {
-                for (int i = 0; specificHiddenTreasures.size() > i ; i++) {
-                    if (specificHiddenTreasures.get(i) == treasure)
-                        lose = true;
-                }
-            }
-            return lose;
-        }
+
+	boolean loseTreasure(TreasureKind treasure, boolean visible) {
+		boolean lose = false;
+		if (visible) {
+			for (int i = 0; specificVisibleTreasures.size() > i; i++) {
+				if (specificVisibleTreasures.get(i) == treasure) {
+					lose = true;
+				}
+			}
+		} else {
+			for (int i = 0; specificHiddenTreasures.size() > i; i++) {
+				if (specificHiddenTreasures.get(i) == treasure) {
+					lose = true;
+				}
+			}
+		}
+		return lose;
+	}
 
 	@Override
 	public String toString() {
