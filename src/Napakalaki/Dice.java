@@ -1,3 +1,5 @@
+package Napakalaki;
+
  
 public class Dice {
     public static final Dice instance = new Dice();
