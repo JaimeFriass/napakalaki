@@ -119,6 +119,12 @@ public class BadConsequence {
 		}
 		return lose;
 	}
+	
+	boolean isEmpty(){
+		boolean empty = false;
+		
+		
+	}
 
 	@Override
 	public String toString() {

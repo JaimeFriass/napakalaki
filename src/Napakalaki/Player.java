@@ -1,11 +1,16 @@
 package Napakalaki;
 
+import java.util.ArrayList;
 
 public class Player { 
     private String name;
     private int level;
     private boolean dead = true;
     private boolean canISteal = true;
+	private BadConsequence pendingBadConsequence;
+	private Player enemy;
+	private Treasure hiddenTreasures;
+	private Treasure visibleTreasures;
     
     public Player(String name) {
         this.name = name;
@@ -24,15 +29,19 @@ public class Player {
     }
     
     private void incrementLevels(int lvls) {
-        level++;
+        for(int i = 0; i < lvls; i++){
+			level++;
+		}
     }
     
     private void decrementLevels(int lvls) {
-        level--;
+        for(int i = 0; i < lvls; i++){
+			level++;
+		}
     }
     
     private void setPendingBadConsequence(BadConsequence bc) {
-        
+        pendingBadConsequence = bc;
     }
     
     private void applyPrize(Monster m) {
@@ -48,11 +57,27 @@ public class Player {
     }
     
     private int howManyVisibleTreasures(TreasureKind tKind) {
-        
+        int number_visible = 0;
+		
+		if(pendingBadConsequence.getTVisible() != 0){
+			ArrayList<TreasureKind> tesoros;
+			tesoros = pendingBadConsequence.getSpecificHiddenTreasures();
+			
+			for(int i = 0; i < tesoros.size(); i++){
+				if(tesoros.get(i) == tKind){
+					number_visible++;
+				}
+			}
+		}
+		
+		return number_visible;
     }
     
     private void dieIfNoTreasures() {
-        
+        if(pendingBadConsequence.getTHidden() == 0 && pendingBadConsequence.getTVisible() == 0)
+			dead = true;
+		else
+			dead = false;
     }
     
     public boolean isDead(){
@@ -84,7 +109,15 @@ public class Player {
     }
     
     public boolean validState() {
-        
+		boolean valid = false;
+		
+        if(pendingBadConsequence != null){
+			if(pendingBadConsequence.isEmpty() && pendingBadConsequence.getTHidden() <= 4){
+				valid = true;
+			}
+		}
+			
+		return valid;
     }
     
     public void initTreasures() {
@@ -122,7 +155,4 @@ public class Player {
     public void discardAllTreasures() {
         
     }
-    
-     
-    
 }
