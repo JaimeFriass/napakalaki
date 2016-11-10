@@ -20,13 +20,43 @@ public class CardDealer {
 		return instance;
 	}
 
-	/*
+	
     // Inicializa el mazo de cartas de Tesoros (unusuedTreasures) con todas
     // las cartas de tesoros proporcionadas.
     private void initTreasureCardDeck() {
-        
+        unusedTreasures.add(new Treasure("Si,mi amo!", 4, TreasureKind.HELMET));
+		unusedTreasures.add(new Treasure("Botas de investigacion", 3, TreasureKind.SHOES));
+		unusedTreasures.add(new Treasure("Capucha de Cthulhu", 3, TreasureKind.HELMET));
+		unusedTreasures.add(new Treasure("A prueba de babas", 2, TreasureKind.ARMOR));
+		unusedTreasures.add(new Treasure("Botas de lluvia acida", 1, TreasureKind.BOTHHANDS));
+		unusedTreasures.add(new Treasure("Casco minero", 2, TreasureKind.HELMET));
+		unusedTreasures.add(new Treasure("Ametralladora ACME", 4, TreasureKind.BOTHHANDS));
+		unusedTreasures.add(new Treasure("Camiseta de la ETSIIT", 1, TreasureKind.ARMOR));
+		unusedTreasures.add(new Treasure("Clavo de rail ferroviario", 3, TreasureKind.ONEHAND));
+		unusedTreasures.add(new Treasure("Cuchillo de sushi arcano", 2, TreasureKind.ONEHAND));
+		unusedTreasures.add(new Treasure("Fez alopodo", 3, TreasureKind.HELMET));
+		unusedTreasures.add(new Treasure("Hacha prehistorica", 2, TreasureKind.ONEHAND));
+		unusedTreasures.add(new Treasure("El aparato del Pr. Tesla", 4, TreasureKind.ARMOR));
+		unusedTreasures.add(new Treasure("Gaita", 4, TreasureKind.BOTHHANDS));
+		unusedTreasures.add(new Treasure("Insecticida", 2, TreasureKind.ONEHAND));
+		unusedTreasures.add(new Treasure("Escopeta de 3 caniones", 4, TreasureKind.BOTHHANDS));
+		unusedTreasures.add(new Treasure("Garabato mistico", 2, TreasureKind.ONEHAND));
+		unusedTreasures.add(new Treasure("LA rebeca metalica", 2, TreasureKind.ARMOR));
+		unusedTreasures.add(new Treasure("Lanzallamas", 4, TreasureKind.BOTHHANDS));
+		unusedTreasures.add(new Treasure("Necrocomicon", 1, TreasureKind.ONEHAND));
+		unusedTreasures.add(new Treasure("Necronomicon", 5, TreasureKind.BOTHHANDS));
+		unusedTreasures.add(new Treasure("Linterna a 2 manos", 3, TreasureKind.BOTHHANDS));
+		unusedTreasures.add(new Treasure("Necrognomicon", 2, TreasureKind.ONEHAND));
+		unusedTreasures.add(new Treasure("Necrotelecom", 2, TreasureKind.HELMET));
+		unusedTreasures.add(new Treasure("Mazo de los antiguos", 3, TreasureKind.ONEHAND));
+		unusedTreasures.add(new Treasure("NecroPlayboycon", 3, TreasureKind.ONEHAND));	//¿Va con segundas lo de una mano con Playboy? Jajaja
+		unusedTreasures.add(new Treasure("Porra preternatural", 2, TreasureKind.ONEHAND));
+		unusedTreasures.add(new Treasure("Shogulador", 1, TreasureKind.BOTHHANDS));
+		unusedTreasures.add(new Treasure("Varita de atizamiento", 3, TreasureKind.ONEHAND));
+		unusedTreasures.add(new Treasure("Tentaculo de pega", 2, TreasureKind.HELMET));
+		unusedTreasures.add(new Treasure("Zapato deja-amigos", 1, TreasureKind.SHOES));
     }
-	 */
+	 
 	// Inicializa el mazo de cartas de Monstruos (unusedMonsters) con todas
 	// las cartas de unusedMonsters proporcionadas.
 	private void initMonsterCardDeck() {
