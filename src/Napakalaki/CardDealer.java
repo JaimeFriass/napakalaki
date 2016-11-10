@@ -174,13 +174,19 @@ public class CardDealer {
 			// Incompleto
 		}
 	}
-
-	/*
+	
     // Baraja el mazo de cartas de monstruos unusedMonsters
     private void shuffleMonsters() {
-        
+        Random rnd = new Random();
+		for (int i = unusedMonsters.size() - 1; i > 0; i--) {
+			int index = rnd.nextInt(i + 1);
+			Monster a = unusedMonsters.get(index);
+			unusedMonsters.set(index, unusedMonsters.get(i));
+			unusedMonsters.set(i, a);
+			// Incompleto
+		}
     }
-    
+    /*
     public Treasure nextTreasure(){
         // P3
     }
