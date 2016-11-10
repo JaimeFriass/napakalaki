@@ -18,13 +18,13 @@ public class CardDealer {
     public CardDealer getInstance() {
         return instance;
     }
-    
+    /*
     // Inicializa el mazo de cartas de Tesoros (unusuedTreasures) con todas
     // las cartas de tesoros proporcionadas.
     private void initTreasureCardDeck() {
         
     }
-    
+    */
     // Inicializa el mazo de cartas de Monstruos (unusedMonsters) con todas
     // las cartas de unusedMonsters proporcionadas.
     private void initMonsterCardDeck() {
