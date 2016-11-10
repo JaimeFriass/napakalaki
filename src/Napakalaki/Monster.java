@@ -58,6 +58,14 @@ public class Monster {
 	boolean loseTreasure(TreasureKind treasure, boolean visible) {
 		return bc.loseTreasure(treasure, visible);
 	}
+	
+	int getLevelsGained(){
+		return bc.getLevels();
+	}
+	
+	int getTreasuresGained(){
+		return bc.getTVisible();
+	}
 
 	@Override
 	public String toString() {

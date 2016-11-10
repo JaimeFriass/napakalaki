@@ -1,5 +1,8 @@
+package Napakalaki;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class CardDealer {
@@ -25,9 +28,10 @@ public class CardDealer {
     // Inicializa el mazo de cartas de Monstruos (unusedMonsters) con todas
     // las cartas de unusedMonsters proporcionadas.
     private void initMonsterCardDeck() {
-        BadConsequence badConsequence = new BadConsequence("Pierdes tu armadura visible y otra oculta", 0,
-			new ArrayList(Arrays.asList(TreasureKind.ARMOR)),
-			new ArrayList(Arrays.asList(TreasureKind.ARMOR)));
+        BadConsequence badConsequence;
+		badConsequence = new BadConsequence("Pierdes tu armadura visible y otra oculta", 0,
+				new ArrayList(Arrays.asList(TreasureKind.ARMOR)),
+				new ArrayList(Arrays.asList(TreasureKind.ARMOR)));
 	Prize prize = new Prize(1, 1);
 	unusedMonsters.add(new Monster("Byakhees de bonanza", 8, badConsequence, prize));
 
@@ -130,7 +134,7 @@ public class CardDealer {
     // Baraja el mazo de cartas de tesoros unusedTreasures
     private void shuffleTreasures() {
         Random rnd = new Random();
-        for (int i = unusedTreasures.length - 1; i > 0; i--) {
+        for (int i = unusedTreasures.size() - 1; i > 0; i--) {
             int index = rnd.nextInt(i + 1);
             Treasure a = unusedTreasures.get(index);
             unusedTreasures.set(index, unusedTreasures.get(i));
@@ -143,7 +147,7 @@ public class CardDealer {
     private void shuffleMonsters() {
         
     }
-    
+    /*
     public Treasure nextTreasure(){
         // P3
     }
@@ -151,7 +155,7 @@ public class CardDealer {
     public Monster nextMonster() {
         // P3
     }
-    
+    */
     public void giveTreasureBack(Treasure t) {
         usedMonsters.add(t);
     }
@@ -159,9 +163,9 @@ public class CardDealer {
     public void giveMonsterBack(Monster m) {
         usedTreasures.add(m);
     }
-    
+    /*
     public void initCards() {
         
     }
-    
+    */
 }
