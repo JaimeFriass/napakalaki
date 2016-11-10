@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author jaimefrias
+ * @author jaimefrias and jesusjimsa
  */
 public class BadConsequence {
 
