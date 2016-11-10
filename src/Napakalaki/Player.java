@@ -7,10 +7,10 @@ public class Player {
     private int level;
     private boolean dead = true;
     private boolean canISteal = true;
-	private BadConsequence pendingBadConsequence;
-	private Player enemy;
-	private Treasure hiddenTreasures;
-	private Treasure visibleTreasures;
+    private BadConsequence pendingBadConsequence;
+    private Player enemy;
+    private Treasure hiddenTreasures;
+    private Treasure visibleTreasures;
     
     public Player(String name) {
         this.name = name;
@@ -35,15 +35,16 @@ public class Player {
     }
     
     private void decrementLevels(int lvls) {
-        for(int i = 0; i < lvls; i++){
-			level++;
-		}
+        if (lvls < level)
+            level = level - lvls;
+        else
+            level = 0;
     }
     
     private void setPendingBadConsequence(BadConsequence bc) {
         pendingBadConsequence = bc;
     }
-    
+    /*
     private void applyPrize(Monster m) {
         
     }
@@ -55,7 +56,8 @@ public class Player {
     private boolean canMakeTreasureVisible(Treasure t) {
         
     }
-    
+    */
+    // Devuelve el número de tesoros visibles de tipo tKind del jugador
     private int howManyVisibleTreasures(TreasureKind tKind) {
         int number_visible = 0;
 		
@@ -83,7 +85,7 @@ public class Player {
     public boolean isDead(){
         return dead;
     }
-    
+    /*
     public Treasure[] getHiddenTreasures() {
         
     }
@@ -107,52 +109,58 @@ public class Player {
     public void discardHiddenTreasure(Treasure t) {
         
     }
-    
+    */
+    // Devuelve true cuando el jugador no tiene ningún mal rollo que cumplir
+    // y no tiene más de 4 tesoros ocultos, y false en caso contrario
     public boolean validState() {
-		boolean valid = false;
+	boolean valid = false;
 		
-        if(pendingBadConsequence != null){
-			if(pendingBadConsequence.isEmpty() && pendingBadConsequence.getTHidden() <= 4){
+        if (pendingBadConsequence != null) {
+            if(pendingBadConsequence.isEmpty() && pendingBadConsequence.getTHidden() <= 4){
 				valid = true;
-			}
+            }
 		}
-			
+		
 		return valid;
     }
-    
+    /*
     public void initTreasures() {
         
     }
-    
+    */
     public int getLevels() {
         return level;
     }
-    
+    /*
     public Treasure stealTreasure() {
         
     }
-    
+    */
     public void setEnemy(Player enemy) {
-        
+        this.enemy = enemy;
     }
-    
+    /*
     private Treasure giveMeATreasure() {
         
     }
-    
+    */
+    // Devuelve variable canISteal
     public boolean canISteal() {
         return canISteal;
     }
     
+    // Devuelve true si el jugador tiene tesoros para ser robados por otro jugador
     private boolean canYouGiveMeATreasure() {
-        
+        return !(visibleTreasures == null && hiddenTreasures == null);
     }
     
+    // Si el jugador roba un tesoro
     private void haveStolen() {
-        
+        canISteal = false;
     }
-    
+    /*
     public void discardAllTreasures() {
         
     }
+	*/
 }
