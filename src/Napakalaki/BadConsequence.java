@@ -120,10 +120,9 @@ public class BadConsequence {
 		return lose;
 	}
 	
+        // Devuelve true cuando no se pierden tesoros
 	boolean isEmpty(){
-		boolean empty = false;
-		
-		
+            return (nVisibleTreasures == 0 && nHiddenTreasures == 0);
 	}
 
 	@Override
