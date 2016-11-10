@@ -41,7 +41,7 @@ public class CardDealer {
 		unusedTreasures.add(new Treasure("Insecticida", 2, TreasureKind.ONEHAND));
 		unusedTreasures.add(new Treasure("Escopeta de 3 caniones", 4, TreasureKind.BOTHHANDS));
 		unusedTreasures.add(new Treasure("Garabato mistico", 2, TreasureKind.ONEHAND));
-		unusedTreasures.add(new Treasure("LA rebeca metalica", 2, TreasureKind.ARMOR));
+		unusedTreasures.add(new Treasure("La rebeca metalica", 2, TreasureKind.ARMOR));
 		unusedTreasures.add(new Treasure("Lanzallamas", 4, TreasureKind.BOTHHANDS));
 		unusedTreasures.add(new Treasure("Necrocomicon", 1, TreasureKind.ONEHAND));
 		unusedTreasures.add(new Treasure("Necronomicon", 5, TreasureKind.BOTHHANDS));
