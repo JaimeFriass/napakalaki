@@ -2,6 +2,7 @@ package Napakalaki;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -165,26 +166,12 @@ public class CardDealer {
 
 	// Baraja el mazo de cartas de tesoros unusedTreasures
 	private void shuffleTreasures() {
-		Random rnd = new Random();
-		for (int i = unusedTreasures.size() - 1; i > 0; i--) {
-			int index = rnd.nextInt(i + 1);
-			Treasure a = unusedTreasures.get(index);
-			unusedTreasures.set(index, unusedTreasures.get(i));
-			unusedTreasures.set(i, a);
-			// Incompleto
-		}
+		Collections.shuffle(unusedTreasures);
 	}
 	
     // Baraja el mazo de cartas de monstruos unusedMonsters
     private void shuffleMonsters() {
-        Random rnd = new Random();
-		for (int i = unusedMonsters.size() - 1; i > 0; i--) {
-			int index = rnd.nextInt(i + 1);
-			Monster a = unusedMonsters.get(index);
-			unusedMonsters.set(index, unusedMonsters.get(i));
-			unusedMonsters.set(i, a);
-			// Incompleto
-		}
+        Collections.shuffle(unusedMonsters);
     }
     /*
     public Treasure nextTreasure(){
@@ -196,11 +183,11 @@ public class CardDealer {
     }
 	 */
 	public void giveTreasureBack(Treasure t) {
-		usedMonsters.add(t);
+		usedTreasures.add(t);
 	}
 
 	public void giveMonsterBack(Monster m) {
-		usedTreasures.add(m);
+		usedMonsters.add(m);
 	}
 	/*
     public void initCards() {
