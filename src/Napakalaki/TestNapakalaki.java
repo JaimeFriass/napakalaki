@@ -1,4 +1,3 @@
-
 package Napakalaki;
 
 import java.util.ArrayList;
@@ -8,7 +7,7 @@ public class TestNapakalaki {
 
 	public static ArrayList<Monster> monstruos = new ArrayList();
 
-        // Método para recorrer un array comprobando que sus monstruos tengan un nivel superior al pasado como argumento
+	// Método para recorrer un array comprobando que sus monstruos tengan un nivel superior al pasado como argumento
 	public static ArrayList<Monster> nivelSuperior(ArrayList<Monster> lista, int level) {
 		ArrayList<Monster> devolver = new ArrayList<>();
 		int j = 0;
@@ -21,7 +20,7 @@ public class TestNapakalaki {
 		return devolver;
 	}
 
-        // Método para recorrer un array y devolviendo sólo los monstruos que hacen perder únicamente niveles
+	// Método para recorrer un array y devolviendo sólo los monstruos que hacen perder únicamente niveles
 	public static ArrayList<Monster> onlyLoseLevels(ArrayList<Monster> lista) {
 		ArrayList<Monster> devolver = new ArrayList<>();
 		int j = 0;
@@ -34,33 +33,33 @@ public class TestNapakalaki {
 
 		return devolver;
 	}
-        
-        // Método para recorrer un array devolviendo los monstruos con buen rollo que implique niveles superior a 1.
-        public static ArrayList<Monster> winLevelsFrom(ArrayList<Monster> lista, int level) {
-            ArrayList<Monster> devolver = new ArrayList<>();
-            int j = 0;
-            for (int i = 0; lista.size() > i ; i++) {
-                if (lista.get(i).winLevelsFrom(level)) {
-                    devolver.set(j, lista.get(i));
-                    j++;
-                }
-            }
-            return devolver;
-        }
-        
-        public static ArrayList<Monster> loseTreasure(ArrayList<Monster> lista, TreasureKind treasure, boolean visible) {
-            ArrayList<Monster> devolver = new ArrayList<>();
-            int j = 0;
-            for (int i = 0; lista.size() > i ; i++) {
-                if (lista.get(i).loseTreasure(treasure, visible)) {
-                    devolver.set(j, lista.get(i));
-                    j++;
-                }
-            }
-            return devolver;
-        }
-        
-        // Recorre el array imprimiendo cada uno de sus monstruos
+
+	// Método para recorrer un array devolviendo los monstruos con buen rollo que implique niveles superior a 1.
+	public static ArrayList<Monster> winLevelsFrom(ArrayList<Monster> lista, int level) {
+		ArrayList<Monster> devolver = new ArrayList<>();
+		int j = 0;
+		for (int i = 0; lista.size() > i; i++) {
+			if (lista.get(i).winLevelsFrom(level)) {
+				devolver.set(j, lista.get(i));
+				j++;
+			}
+		}
+		return devolver;
+	}
+
+	public static ArrayList<Monster> loseTreasure(ArrayList<Monster> lista, TreasureKind treasure, boolean visible) {
+		ArrayList<Monster> devolver = new ArrayList<>();
+		int j = 0;
+		for (int i = 0; lista.size() > i; i++) {
+			if (lista.get(i).loseTreasure(treasure, visible)) {
+				devolver.set(j, lista.get(i));
+				j++;
+			}
+		}
+		return devolver;
+	}
+
+	// Recorre el array imprimiendo cada uno de sus monstruos
 	public static void imprimeMonstruos(ArrayList<Monster> lista) {
 		lista.forEach((_item) -> {
 			System.out.println(lista.toString() + "/n");
@@ -89,8 +88,8 @@ public class TestNapakalaki {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-                
-                // CREACIÓN DE MONSTRUOS
+
+		// CREACIÓN DE MONSTRUOS
 		BadConsequence badConsequence = new BadConsequence("Pierdes tu armadura visible y otra oculta", 0,
 				new ArrayList(Arrays.asList(TreasureKind.ARMOR)),
 				new ArrayList(Arrays.asList(TreasureKind.ARMOR)));
@@ -191,9 +190,8 @@ public class TestNapakalaki {
 				Integer.MAX_VALUE);
 		prize = new Prize(2, 1);
 		monstruos.add(new Monster("Bicéfalo", 21, badConsequence, prize));
-                
-                
-                // Llamada a métodos que recorren el array
+
+		// Llamada a métodos que recorren el array
 		System.out.println("Lista de monstruos con lvl mayor de 10\n");
 		ArrayList<Monster> lvlmayor = new ArrayList(nivelSuperior(monstruos, 10));
 
