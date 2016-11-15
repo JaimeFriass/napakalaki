@@ -8,7 +8,7 @@ public class Dice {
         
     }
     
-    public Dice getInstance() {
+    public static Dice getInstance() {
         return instance;
     }
     
