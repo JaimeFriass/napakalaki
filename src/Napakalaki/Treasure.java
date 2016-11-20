@@ -2,9 +2,9 @@ package Napakalaki;
 
 public class Treasure {
 
-	public String name;
-	public int bonus;
-	TreasureKind type;
+	private String name;
+	private int bonus;
+	private TreasureKind type;
 
 	public Treasure(String name, int bonus, TreasureKind t) {
 		this.name = name;
