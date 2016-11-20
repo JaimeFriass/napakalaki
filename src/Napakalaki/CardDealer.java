@@ -3,8 +3,6 @@ package Napakalaki;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class CardDealer {
 
@@ -17,7 +15,7 @@ public class CardDealer {
 	private CardDealer() {
 	}
 
-	public CardDealer getInstance() {
+	public static CardDealer getInstance() {
 		return instance;
 	}
 

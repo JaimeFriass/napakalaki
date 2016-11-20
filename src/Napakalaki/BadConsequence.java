@@ -132,5 +132,22 @@ public class BadConsequence {
 				+ " Hidden Treasures = " + Integer.toString(nHiddenTreasures)
 				+ " death = " + Boolean.toString(death);
 	}
-
+	
+	void substractVisibleTreasure(Treasure t){
+		for(int i = 0; i < nVisibleTreasures; i++){
+			if(specificVisibleTreasures.get(i) == t.getType()){
+				nVisibleTreasures--;
+				specificVisibleTreasures.remove(t.getType());
+			}
+		}
+	}
+	
+	void substractHiddenTreasure(Treasure t){
+		for(int i = 0; i < nHiddenTreasures; i++){
+			if(specificHiddenTreasures.get(i) == t.getType()){
+				nHiddenTreasures--;
+				specificHiddenTreasures.remove(t.getType());
+			}
+		}
+	}
 }
