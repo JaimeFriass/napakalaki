@@ -74,15 +74,20 @@ public class Napakalaki {
 	public CombatResult developCombat() {
 
 	}
+	*/
 
 	public void discardVisibleTreasures(ArrayList<Treasure> treasures) {
-
+		for (int i = 0; i < treasures.size() ; i++) {
+			Treasure treasure = next();
+			currentPlayer.discardVisibleTreasure(treasure);
+			
+		}
 	}
 
 	public void discardHiddenTreasures(ArrayList<Treasure> treasures) {
 
 	}
-
+	/*
 	public void makeTreasureVisible(ArrayList<Treasure> treasures) {
 
 	}
