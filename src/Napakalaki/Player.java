@@ -144,7 +144,7 @@ public class Player {
     // Devuelve true cuando el jugador no tiene ningún mal rollo que cumplir
     // y no tiene más de 4 tesoros ocultos, y false en caso contrario
     public boolean validState() {
-	boolean valid = false;
+		boolean valid = false;
 		
         if (pendingBadConsequence != null) {
             if(pendingBadConsequence.isEmpty() && pendingBadConsequence.getTHidden() <= 4){
