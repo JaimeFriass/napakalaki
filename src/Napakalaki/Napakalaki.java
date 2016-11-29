@@ -90,11 +90,16 @@ public class Napakalaki {
 	public void makeTreasureVisible(ArrayList<Treasure> treasures) {
 
 	}
-
-	public void initGame(ArrayList<String> players) {
-
-	}
 	*/
+	public void initGame(ArrayList<String> players) {
+		initPlayers(players);
+		setEnemies();
+		CardDealer dealer = CardDealer.getInstance();
+		dealer.initTreasureCardDeck();
+		dealer.initMonsterCardDeck();
+		nextTurn();
+	}
+	
 	public Player getCurrentPlayer() {
 		return currentPlayer;
 	}
@@ -103,11 +108,20 @@ public class Napakalaki {
 		return currentMonster;
 	}
 
-	/*
-    public boolean nextTurn() {
-
-    }
-	 */
+   	public boolean nextTurn() {
+		boolean stateOK = nextTurnAllowed();
+		if (stateOK) {
+			currentMonster = dealer.nextMonster();
+			currentPlayer = nextPlayer();
+			dead = currentPlayer.isDead();
+			if (dead) {
+				currentPlayer.initTreasures();
+			}
+		}
+		
+		return stateOK;
+			
+    	}
 	public boolean endOfGame(CombatResult result) {
 		return (CombatResult.WINGAME == result);
 	}
