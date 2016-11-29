@@ -3,8 +3,6 @@ package Napakalaki;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class CardDealer {
 
@@ -17,15 +15,14 @@ public class CardDealer {
 	private CardDealer() {
 	}
 
-	public CardDealer getInstance() {
+	public static CardDealer getInstance() {
 		return instance;
 	}
 
-	
-    // Inicializa el mazo de cartas de Tesoros (unusuedTreasures) con todas
-    // las cartas de tesoros proporcionadas.
-    private void initTreasureCardDeck() {
-        unusedTreasures.add(new Treasure("Si,mi amo!", 4, TreasureKind.HELMET));
+	// Inicializa el mazo de cartas de Tesoros (unusuedTreasures) con todas
+	// las cartas de tesoros proporcionadas.
+	private void initTreasureCardDeck() {
+		unusedTreasures.add(new Treasure("Si,mi amo!", 4, TreasureKind.HELMET));
 		unusedTreasures.add(new Treasure("Botas de investigacion", 3, TreasureKind.SHOES));
 		unusedTreasures.add(new Treasure("Capucha de Cthulhu", 3, TreasureKind.HELMET));
 		unusedTreasures.add(new Treasure("A prueba de babas", 2, TreasureKind.ARMOR));
@@ -56,8 +53,8 @@ public class CardDealer {
 		unusedTreasures.add(new Treasure("Varita de atizamiento", 3, TreasureKind.ONEHAND));
 		unusedTreasures.add(new Treasure("Tentaculo de pega", 2, TreasureKind.HELMET));
 		unusedTreasures.add(new Treasure("Zapato deja-amigos", 1, TreasureKind.SHOES));
-    }
-	 
+	}
+
 	// Inicializa el mazo de cartas de Monstruos (unusedMonsters) con todas
 	// las cartas de unusedMonsters proporcionadas.
 	private void initMonsterCardDeck() {
@@ -168,20 +165,46 @@ public class CardDealer {
 	private void shuffleTreasures() {
 		Collections.shuffle(unusedTreasures);
 	}
-	
-    // Baraja el mazo de cartas de monstruos unusedMonsters
-    private void shuffleMonsters() {
-        Collections.shuffle(unusedMonsters);
-    }
-    /*
-    public Treasure nextTreasure(){
-        // P3
-    }
-    
-    public Monster nextMonster() {
-        // P3
-    }
-	 */
+
+	// Baraja el mazo de cartas de monstruos unusedMonsters
+	private void shuffleMonsters() {
+		Collections.shuffle(unusedMonsters);
+	}
+
+	public Treasure nextTreasure() {
+		Treasure siguiente;
+		
+		if(!unusedTreasures.isEmpty()){
+			siguiente = unusedTreasures.get(unusedTreasures.size() - 1);
+			unusedMonsters.remove(unusedTreasures.size() - 1);
+		}
+		else{
+			unusedTreasures = usedTreasures;
+			shuffleTreasures();
+			
+			siguiente = unusedTreasures.get(unusedTreasures.size() - 1);
+		}
+		
+		return siguiente;
+	}
+
+	public Monster nextMonster() {
+		Monster siguiente;
+		
+		if(!unusedMonsters.isEmpty()){
+			siguiente = unusedMonsters.get(unusedMonsters.size() - 1);
+			unusedMonsters.remove(unusedMonsters.size() - 1);
+		}
+		else{
+			unusedMonsters = usedMonsters;
+			shuffleMonsters();
+			
+			siguiente = unusedMonsters.get(unusedMonsters.size() - 1);
+		}
+		
+		return siguiente;
+	}
+
 	public void giveTreasureBack(Treasure t) {
 		usedTreasures.add(t);
 	}
