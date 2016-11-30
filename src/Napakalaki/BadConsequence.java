@@ -150,4 +150,10 @@ public class BadConsequence {
 			}
 		}
 	}
+
+	BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v; ArrayList<Treasure> h) {
+		// Devuelve un nuevo objeto mal rollo que se ajusta a las posibilidades del jugador.
+		BadConsequence bc = new BadConsequence();
+		// aqui falta tela, me he rallao, luego lo termino xddd
+	}
 }

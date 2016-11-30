@@ -68,25 +68,32 @@ public class Napakalaki {
 	}
 
 	public static Napakalaki getInstance() {
-		return instance;
+		return instance;	
 	}
-	/*
+	
 	public CombatResult developCombat() {
+		CombatResult combatResult;
+		combatResult = currentPlayer.combat(currentMonster);
+		CD.giveMonsterBack(m); // m??? k e eso
 
 	}
-
 	public void discardVisibleTreasures(ArrayList<Treasure> treasures) {
+		Treasure treasure = new Treasure();
 		for (int i = 0; i < treasures.size() ; i++) {
-			Treasure treasure = next();
-			currentPlayer.discardVisibleTreasure(treasure);
-			
+			treasure = treasures.next();
+			currentPlayer.discardVisibleTreasures(treasure);
+			dealer.giveTreasureBack(treasure);
+		}
+
+	public void discardHiddenTreasures(ArrayList<Treasure> treasures) {
+		Treasure treasure = new Treasure();
+		for (int i = 0; i < treasures.size; i++) {
+			treasure = treasures.next();
+			currentPlayer.discardHiddenTreasures(treasure);
+			dealer.giveTreasureBack(treasure);
 		}
 	}
-	
-	public void discardHiddenTreasures(ArrayList<Treasure> treasures) {
-
-	}
-	
+	/*
 	public void makeTreasureVisible(ArrayList<Treasure> treasures) {
 
 	}
