@@ -124,23 +124,51 @@ public class Player {
     public Treasure[] getVisibleTreasures() {
         
     }
-    
+   	*/
     public CombatResult combat(Monster m) {
-        
+    	CombatResult combatResult;
+        int myLevel = getCombatLevel();
+        int monsterLevel = currentMonster.getCombatLevel();
+        int number;
+        if (!canISteal()) {
+        	Dice dice = Dice.getInstance();
+        	number = dice.nextNumber();
+        	if (number < 3)
+        		enemyLevel = enemy.getCombatLevel();
+        }
+
+        if (myLevel > monsterLevel) {
+        	applyPrize(m);
+        	if (levels >= MAXLEVEL)
+        		combatResult = CombatResult::WINGAME;
+        	else
+        		combatResult = CombatResult::WIN;
+        }
+        else {
+        	applyBadConsequence(m);
+        	combatResult = CombatResult::LOSE;
+        }
+        return combatResult;
     }
-    
+    /*
     public void makeTreasureVisible(Treasure t) {
         
     }
-    
-    public void discardVisibleTreasure(Treasure t) {
-        
-    }
-    
-    public void discardHiddenTreasure(Treasure t) {
-        
-    }
     */
+    public void discardVisibleTreasure(Treasure t) {
+        visibleTreasures.remove(t);
+        if (pendingBadConsequence != null && !pendingBadConsequence.isEmpty())
+        	pendingBadConsequence.substractVisibleTreasure(t);
+        dieIfNoTreasures();
+    }
+   
+    public void discardHiddenTreasure(Treasure t) {
+        hiddenTreasures.remove(t);
+        if (pendingBadConsequence != null && !pendingBadConsequence.isEmpty())
+        	pendingBadConsequence.substractHiddenTreasure(t);
+        dieIfNoTreasures();
+    }
+
     // Devuelve true cuando el jugador no tiene ningún mal rollo que cumplir
     // y no tiene más de 4 tesoros ocultos, y false en caso contrario
     public boolean validState() {
@@ -177,7 +205,7 @@ public class Player {
         return hiddenTreasures.get(rn.nextInt(hiddenTreasures.size()));
     }
     
-    // Devuelve variable canISteal
+    // decrementLevelsuelve variable canISteal
     public boolean canISteal() {
         return canISteal;
     }
