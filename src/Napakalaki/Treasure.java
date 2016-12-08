@@ -5,6 +5,12 @@ public class Treasure {
 	private String name;
 	private int bonus;
 	private TreasureKind type;
+	
+	public Treasure() {
+	    this.name = null;
+	    this.bonus = 0;
+	    type = null;
+	}
 
 	public Treasure(String name, int bonus, TreasureKind t) {
 		this.name = name;

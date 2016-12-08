@@ -10,6 +10,7 @@ public class Player {
     private boolean canISteal = true;
     private BadConsequence pendingBadConsequence;
     private Player enemy;
+    private final int MAXLEVEL = 10;
     private ArrayList<Treasure> hiddenTreasures = new ArrayList();
     private ArrayList<Treasure> visibleTreasures = new ArrayList();
     
@@ -50,7 +51,7 @@ public class Player {
        int nLevels = m.getLevelsGained();
        incrementLevels(nLevels);
        int nTreasures = m.getTreasuresGained();
-       Treasure treasure = new Treasure();
+       Treasure treasure;
        if (nTreasures > 0) {
        		CardDealer dealer = CardDealer.getInstance();
        		for (int i = 0; i < nTreasures; i++) {
@@ -103,11 +104,11 @@ public class Player {
     }
     
     // Devuelve el número de tesoros visibles de tipo tKind del jugador
-    private int howManyVisibleTreasures(TreasureKind tKind) {
+    private int howManyVisibleTreasures(Treasure tKind) {
         int number_visible = 0;
 		
 		if(pendingBadConsequence.getTVisible() != 0){
-			ArrayList<TreasureKind> tesoros;
+			ArrayList<Treasure> tesoros;
 			tesoros = pendingBadConsequence.getSpecificHiddenTreasures();
 			
 			for(int i = 0; i < tesoros.size(); i++){
@@ -130,19 +131,19 @@ public class Player {
     public boolean isDead(){
         return dead;
     }
-    /*
-    public Treasure[] getHiddenTreasures() {
-        
+    
+    public ArrayList<Treasure> getHiddenTreasures() {
+        return hiddenTreasures;
     }
     
-    public Treasure[] getVisibleTreasures() {
-        
+    public ArrayList<Treasure> getVisibleTreasures() {
+        return visibleTreasures;
     }
-   	*/
     public CombatResult combat(Monster m) {
     	CombatResult combatResult;
         int myLevel = getCombatLevel();
-        int monsterLevel = currentMonster.getCombatLevel();
+        int monsterLevel = m.getCombatLevel();
+	int enemyLevel;
         int number;
         if (!canISteal()) {
         	Dice dice = Dice.getInstance();
@@ -153,14 +154,14 @@ public class Player {
 
         if (myLevel > monsterLevel) {
         	applyPrize(m);
-        	if (levels >= MAXLEVEL)
-        		combatResult = CombatResult::WINGAME;
+        	if (level >= MAXLEVEL)
+        		combatResult = CombatResult.WINGAME;
         	else
-        		combatResult = CombatResult::WIN;
+        		combatResult = CombatResult.WIN;
         }
         else {
         	applyBadConsequence(m);
-        	combatResult = CombatResult::LOSE;
+        	combatResult = CombatResult.LOSE;
         }
         return combatResult;
     }
@@ -268,11 +269,11 @@ public class Player {
     public void discardAllTreasures() {
     	Treasure treasure = new Treasure();
         for (int i = 0; i < visibleTreasures.size(); i++) {
-        	treasure = visibleTreasures.next();
-        	discardAllTreasures(treasure);
+        	treasure = visibleTreasures.get(i);
+        	discardAllTreasures();
         }
         for (int i = 0; i < hiddenTreasures.size(); i++) {
-        	treasure = hiddenTreasures.next();
+        	treasure = hiddenTreasures.get(i);
         	discardHiddenTreasure(treasure);
         }
     }

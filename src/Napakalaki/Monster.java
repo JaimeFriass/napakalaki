@@ -55,7 +55,7 @@ public class Monster {
 		return prize.winLevelsFrom(lvl);
 	}
 
-	boolean loseTreasure(TreasureKind treasure, boolean visible) {
+	boolean loseTreasure(Treasure treasure, boolean visible) {
 		return bc.loseTreasure(treasure, visible);
 	}
 	

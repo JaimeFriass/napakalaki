@@ -21,7 +21,7 @@ public class CardDealer {
 
 	// Inicializa el mazo de cartas de Tesoros (unusuedTreasures) con todas
 	// las cartas de tesoros proporcionadas.
-	private void initTreasureCardDeck() {
+	public void initTreasureCardDeck() {
 		unusedTreasures.add(new Treasure("Si,mi amo!", 4, TreasureKind.HELMET));
 		unusedTreasures.add(new Treasure("Botas de investigacion", 3, TreasureKind.SHOES));
 		unusedTreasures.add(new Treasure("Capucha de Cthulhu", 3, TreasureKind.HELMET));
@@ -57,7 +57,7 @@ public class CardDealer {
 
 	// Inicializa el mazo de cartas de Monstruos (unusedMonsters) con todas
 	// las cartas de unusedMonsters proporcionadas.
-	private void initMonsterCardDeck() {
+	public void initMonsterCardDeck() {
 		BadConsequence badConsequence;
 		badConsequence = new BadConsequence("Pierdes tu armadura visible y otra oculta", 0,
 				new ArrayList(Arrays.asList(TreasureKind.ARMOR)),

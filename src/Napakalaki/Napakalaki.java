@@ -74,23 +74,25 @@ public class Napakalaki {
 	public CombatResult developCombat() {
 		CombatResult combatResult;
 		combatResult = currentPlayer.combat(currentMonster);
-		CD.giveMonsterBack(m); // m??? k e eso
+		CD.giveMonsterBack(currentMonster);
+		
+		return combatResult;
 
 	}
 	public void discardVisibleTreasures(ArrayList<Treasure> treasures) {
-		Treasure treasure = new Treasure();
+		Treasure treasure;
 		for (int i = 0; i < treasures.size() ; i++) {
-			treasure = treasures.next();
-			currentPlayer.discardVisibleTreasures(treasure);
-			dealer.giveTreasureBack(treasure);
+			treasure = treasures.get(i);
+			currentPlayer.discardVisibleTreasure(treasure);
+			CD.giveTreasureBack(treasure);
 		}
-
+	}
 	public void discardHiddenTreasures(ArrayList<Treasure> treasures) {
-		Treasure treasure = new Treasure();
-		for (int i = 0; i < treasures.size; i++) {
-			treasure = treasures.next();
-			currentPlayer.discardHiddenTreasures(treasure);
-			dealer.giveTreasureBack(treasure);
+		Treasure treasure;
+		for (int i = 0; i < treasures.size(); i++) {
+			treasure = treasures.get(i);
+			currentPlayer.discardHiddenTreasure(treasure);
+			CD.giveTreasureBack(treasure);
 		}
 	}
 	/*
@@ -101,9 +103,8 @@ public class Napakalaki {
 	public void initGame(ArrayList<String> players) {
 		initPlayers(players);
 		setEnemies();
-		CardDealer dealer = CardDealer.getInstance();
-		dealer.initTreasureCardDeck();
-		dealer.initMonsterCardDeck();
+		CD.initTreasureCardDeck();
+		CD.initMonsterCardDeck();
 		nextTurn();
 	}
 	
@@ -118,10 +119,9 @@ public class Napakalaki {
    	public boolean nextTurn() {
 		boolean stateOK = nextTurnAllowed();
 		if (stateOK) {
-			currentMonster = dealer.nextMonster();
+			currentMonster = CD.nextMonster();
 			currentPlayer = nextPlayer();
-			dead = currentPlayer.isDead();
-			if (dead) {
+			if ( currentPlayer.isDead()) {
 				currentPlayer.initTreasures();
 			}
 		}

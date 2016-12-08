@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Napakalaki;
 
 import java.util.ArrayList;
@@ -18,8 +14,8 @@ public class BadConsequence {
 	private int nVisibleTreasures;
 	private int nHiddenTreasures;
 	private boolean death;
-	private ArrayList<TreasureKind> specificHiddenTreasures = new ArrayList();
-	private ArrayList<TreasureKind> specificVisibleTreasures = new ArrayList();
+	private ArrayList<Treasure> specificHiddenTreasures = new ArrayList();
+	private ArrayList<Treasure> specificVisibleTreasures = new ArrayList();
 
 	BadConsequence(String text, int levels, int nVisible, int nHidden) {
 		this.text = text;
@@ -33,21 +29,21 @@ public class BadConsequence {
 		this.death = death;
 	}
 
-	BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible, ArrayList<TreasureKind> tHidden) {
+	BadConsequence(String text, int levels, ArrayList<Treasure> tVisible, ArrayList<Treasure> tHidden) {
 		this.text = text;
 		this.levels = levels;
 		this.specificHiddenTreasures = tHidden;
 		this.specificVisibleTreasures = tVisible;
 	}
 
-	BadConsequence(String text, int levels, int nVisible, ArrayList<TreasureKind> tHidden) {
+	BadConsequence(String text, int levels, int nVisible, ArrayList<Treasure> tHidden) {
 		this.text = text;
 		this.levels = levels;
 		this.specificHiddenTreasures = tHidden;
 		nVisibleTreasures = nVisible;
 	}
 
-	BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible, int nHidden) {
+	BadConsequence(String text, int levels, ArrayList<Treasure> tVisible, int nHidden) {
 		this.text = text;
 		this.levels = levels;
 		nHiddenTreasures = nHidden;
@@ -86,11 +82,11 @@ public class BadConsequence {
 		this.death = death;
 	}
 
-	ArrayList<TreasureKind> getSpecificHiddenTreasures() {
+	ArrayList<Treasure> getSpecificHiddenTreasures() {
 		return specificHiddenTreasures;
 	}
 
-	ArrayList<TreasureKind> getSpecificVisibleTreasures() {
+	ArrayList<Treasure> getSpecificVisibleTreasures() {
 		return specificVisibleTreasures;
 	}
 
@@ -102,7 +98,7 @@ public class BadConsequence {
 		return correcto;
 	}
 
-	boolean loseTreasure(TreasureKind treasure, boolean visible) {
+	boolean loseTreasure(Treasure treasure, boolean visible) {
 		boolean lose = false;
 		if (visible) {
 			for (int i = 0; specificVisibleTreasures.size() > i; i++) {
@@ -135,25 +131,46 @@ public class BadConsequence {
 	
 	void substractVisibleTreasure(Treasure t){
 		for(int i = 0; i < nVisibleTreasures; i++){
-			if(specificVisibleTreasures.get(i) == t.getType()){
+			if(specificVisibleTreasures.get(i).getType() == t.getType()){
 				nVisibleTreasures--;
-				specificVisibleTreasures.remove(t.getType());
+				specificVisibleTreasures.remove(t);
 			}
 		}
 	}
 	
 	void substractHiddenTreasure(Treasure t){
 		for(int i = 0; i < nHiddenTreasures; i++){
-			if(specificHiddenTreasures.get(i) == t.getType()){
+			if(specificHiddenTreasures.get(i).getType() == t.getType()){
 				nHiddenTreasures--;
-				specificHiddenTreasures.remove(t.getType());
+				specificHiddenTreasures.remove(t);
 			}
 		}
 	}
 
-	BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v; ArrayList<Treasure> h) {
+	BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h) {
 		// Devuelve un nuevo objeto mal rollo que se ajusta a las posibilidades del jugador.
-		BadConsequence bc = new BadConsequence();
-		// aqui falta tela, me he rallao, luego lo termino xddd
+		int visibleTreasures;
+		int hiddenTreasures;
+		visibleTreasures = nVisibleTreasures;
+		hiddenTreasures = nHiddenTreasures;
+		ArrayList<Treasure> specificVisible = specificVisibleTreasures;
+		ArrayList<Treasure> specificHidden = specificHiddenTreasures;
+		
+		if (v.size() < nVisibleTreasures)
+		    nVisibleTreasures = v.size();
+		
+		if (h.size() < nHiddenTreasures)
+		    nHiddenTreasures = h.size();
+		
+		for (int i = 0; i < specificVisibleTreasures.size(); i++) {
+		    if ( specificVisible.get(i) != v.get(i) ) {
+			specificVisible.remove(i);
+			i--;
+		    }
+		}
+		
+		BadConsequence bc = new BadConsequence(text, 0, specificVisible, specificHidden);
+		
+		return bc;
 	}
 }
