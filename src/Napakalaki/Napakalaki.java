@@ -58,7 +58,7 @@ public class Napakalaki {
 		int result;
 
 		for (int i = 0; i < players.size(); i++) {
-			result = rn.nextInt(players.size()) + 1;
+			result = rn.nextInt(players.size());
 			if (result != i) {
 				players.get(i).setEnemy(players.get(result));
 			} else {

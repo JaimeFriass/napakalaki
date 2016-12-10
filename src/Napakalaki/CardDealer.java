@@ -174,15 +174,15 @@ public class CardDealer {
 	public Treasure nextTreasure() {
 		Treasure siguiente;
 		
-		if(!unusedTreasures.isEmpty()){
-			siguiente = unusedTreasures.get(unusedTreasures.size() - 1);
-			unusedMonsters.remove(unusedTreasures.size() - 1);
+		if(unusedTreasures.isEmpty() ){
+		    unusedTreasures = usedTreasures;
+		    shuffleTreasures();
+		    
+		    siguiente = unusedTreasures.get(unusedTreasures.size() - 1);
 		}
 		else{
-			unusedTreasures = usedTreasures;
-			shuffleTreasures();
-			
-			siguiente = unusedTreasures.get(unusedTreasures.size() - 1);
+		    siguiente = unusedTreasures.get(unusedTreasures.size() - 1);
+		    unusedMonsters.remove(unusedTreasures.size() - 1);
 		}
 		
 		return siguiente;
