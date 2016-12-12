@@ -14,6 +14,10 @@ public class Player {
     private ArrayList<Treasure> hiddenTreasures = new ArrayList();
     private ArrayList<Treasure> visibleTreasures = new ArrayList();
     
+    public String toString() {
+	return name;
+    }
+    
     public Player(String name) {
         this.name = name;
     }
@@ -248,7 +252,10 @@ public class Player {
     private Treasure giveMeATreasure() {
 		Random rn = new Random();
 		
-        return hiddenTreasures.get(rn.nextInt(hiddenTreasures.size()));
+		if (hiddenTreasures.isEmpty())
+		    return null;
+		else
+		    return hiddenTreasures.get(rn.nextInt(hiddenTreasures.size() - 1));
     }
     
     // decrementLevelsuelve variable canISteal
@@ -268,6 +275,7 @@ public class Player {
 
     public void discardAllTreasures() {
     	Treasure treasure = new Treasure();
+	
         for (int i = 0; i < visibleTreasures.size(); i++) {
         	treasure = visibleTreasures.get(i);
         	discardAllTreasures();

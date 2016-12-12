@@ -27,7 +27,7 @@ public class Napakalaki {
 		
 		if (primera_jugada) {
 			primera_jugada = false;
-			result = rn.nextInt(players.size());
+			result = rn.nextInt(players.size() - 1);
 		}
 		else{
 			for(int i = 0; i < players.size(); i++){
@@ -41,7 +41,9 @@ public class Napakalaki {
 				}
 			}
 		}
-
+		if (result >= players.size())
+		    result -= 1;
+		
 		return players.get(result);
 	}
 

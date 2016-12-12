@@ -11,6 +11,10 @@ public class Treasure {
 	    this.bonus = 0;
 	    type = null;
 	}
+	
+	public String toString() {
+	    return name;
+	}
 
 	public Treasure(String name, int bonus, TreasureKind t) {
 		this.name = name;

@@ -182,7 +182,7 @@ public class CardDealer {
 		}
 		else{
 		    siguiente = unusedTreasures.get(unusedTreasures.size() - 1);
-		    unusedMonsters.remove(unusedTreasures.size() - 1);
+		    unusedTreasures.remove(unusedTreasures.size() - 1);
 		}
 		
 		return siguiente;
