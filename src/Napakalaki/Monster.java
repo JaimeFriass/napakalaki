@@ -15,20 +15,31 @@ public class Monster {
 	private int combatLevel;
 	private BadConsequence bc;
 	private Prize prize;
+	private int levelChangeAgainstCultistPlayer = 0;
 
+	//Constructor normal
 	Monster(String name, int level, BadConsequence bc, Prize prize) {
 		this.name = name;
 		combatLevel = level;
 		this.bc = bc;
 		this.prize = prize;
 	}
+	
 	// Constructor de copia
-
 	public Monster(Monster monstruo) {
 		this.name = monstruo.name;
 		this.combatLevel = monstruo.combatLevel;
 		this.bc = monstruo.bc;
 		this.prize = monstruo.prize;
+	}
+	
+	//Constructor para Cultist
+	public Monster(String name, int combatLevel, BadConsequence badConsequence, Prize prize, int IC){
+		this.name = name;
+		this.combatLevel = combatLevel;
+		bc = badConsequence;
+		this.prize = prize;
+		levelChangeAgainstCultistPlayer = IC;
 	}
 
 	String getName() {
@@ -45,6 +56,10 @@ public class Monster {
 
 	Prize getPrize() {
 		return prize;
+	}
+	
+	int getCombatLevelAgainstCultistPlayer(){
+		return levelChangeAgainstCultistPlayer;
 	}
 
 	boolean onlyLoseLevels() {

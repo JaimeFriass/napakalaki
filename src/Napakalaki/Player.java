@@ -14,13 +14,26 @@ public class Player {
     private ArrayList<Treasure> hiddenTreasures = new ArrayList();
     private ArrayList<Treasure> visibleTreasures = new ArrayList();
     
+	@Override
     public String toString() {
-	return name;
+		return name;
     }
+	
+	protected int getOponentLevel(Monster m){
+		return m.getCombatLevel();
+	}
+	
+	protected boolean shouldConvert(){
+		
+	}
     
     public Player(String name) {
         this.name = name;
     }
+	
+	public Player (Player p){
+		name = p.getName();
+	}
     
     public String getName() {
         return name;
@@ -30,7 +43,7 @@ public class Player {
         dead = false;
     }
     
-    private int getCombatLevel() {
+	protected int getCombatLevel() {
         return level;
     }
     
