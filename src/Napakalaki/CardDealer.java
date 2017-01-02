@@ -11,6 +11,7 @@ public class CardDealer {
 	private ArrayList<Monster> usedMonsters = new ArrayList();
 	private ArrayList<Treasure> unusedTreasures = new ArrayList();
 	private ArrayList<Treasure> usedTreasures = new ArrayList();
+	private ArrayList<Cultist> unusedCultist = new ArrayList();
 
 	private CardDealer() {
 	}
@@ -160,6 +161,15 @@ public class CardDealer {
 		prize = new Prize(2, 1);
 		unusedMonsters.add(new Monster("Bicéfalo", 21, badConsequence, prize));
 	}
+	
+	private void initCultistCardDeck(){
+		unusedCultist.add(new Cultist("Sectario 1", 1));
+		unusedCultist.add(new Cultist("Sectario 2", 2));
+		unusedCultist.add(new Cultist("Sectario 3", 1));
+		unusedCultist.add(new Cultist("Sectario 4", 2));
+		unusedCultist.add(new Cultist("Sectario 5", 1));
+		unusedCultist.add(new Cultist("Sectario 6", 1));
+	}
 
 	// Baraja el mazo de cartas de tesoros unusedTreasures
 	private void shuffleTreasures() {
@@ -169,6 +179,10 @@ public class CardDealer {
 	// Baraja el mazo de cartas de monstruos unusedMonsters
 	private void shuffleMonsters() {
 		Collections.shuffle(unusedMonsters);
+	}
+	
+	private void shuffleCultist(){
+		Collections.shuffle(unusedCultist);
 	}
 
 	public Treasure nextTreasure() {
@@ -205,6 +219,21 @@ public class CardDealer {
 		return siguiente;
 	}
 
+	public Cultist nextCultist(){
+		Cultist siguiente;
+		
+		if(unusedCultist.isEmpty()){
+			initCultistCardDeck();
+			shuffleCultist();
+		}
+		
+		siguiente = unusedCultist.get(0);
+		
+		unusedCultist.remove(siguiente);
+		
+		return siguiente;
+	}
+	
 	public void giveTreasureBack(Treasure t) {
 		usedTreasures.add(t);
 	}
@@ -212,9 +241,15 @@ public class CardDealer {
 	public void giveMonsterBack(Monster m) {
 		usedMonsters.add(m);
 	}
-	/*
+	
     public void initCards() {
-        
+        initMonsterCardDeck();
+		shuffleMonsters();
+		
+		initTreasureCardDeck();
+		shuffleTreasures();
+		
+		initCultistCardDeck();
+		shuffleCultist();
     }
-	 */
 }
