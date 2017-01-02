@@ -24,7 +24,15 @@ public class Player {
 	}
 	
 	protected boolean shouldConvert(){
+		Dice dice = Dice.getInstance();
+		int lanzar = dice.nextNumber();
+		boolean deberia = false;
 		
+		if(lanzar == 6){
+			deberia = true;
+		}
+		
+		return deberia;
 	}
     
     public Player(String name) {
@@ -156,22 +164,25 @@ public class Player {
     public ArrayList<Treasure> getVisibleTreasures() {
         return visibleTreasures;
     }
-    public CombatResult combat(Monster m) {
+    public CombatResult combat(Monster m){
     	CombatResult combatResult;
         int myLevel = getCombatLevel();
-        int monsterLevel = m.getCombatLevel();
-	int enemyLevel;
+        int monsterLevel = getOponentLevel(m);
+		int enemyLevel;
         int number;
-        if (!canISteal()) {
+		
+        if (!canISteal()){
         	Dice dice = Dice.getInstance();
         	number = dice.nextNumber();
+			
         	if (number < 3)
         		enemyLevel = enemy.getCombatLevel();
         }
 
-        if (myLevel > monsterLevel) {
+        if (myLevel > monsterLevel){
         	applyPrize(m);
-        	if (level >= MAXLEVEL)
+        	
+			if (level >= MAXLEVEL)
         		combatResult = CombatResult.WINGAME;
         	else
         		combatResult = CombatResult.WIN;
@@ -180,7 +191,14 @@ public class Player {
         	applyBadConsequence(m);
         	combatResult = CombatResult.LOSE;
         }
-        return combatResult;
+		
+		if(combatResult == CombatResult.LOSE){
+			if(shouldConvert()){
+				combatResult = CombatResult.LOSEANDCONVERT;
+			}
+		}
+        
+		return combatResult;
     }
 
     public void makeTreasureVisible(Treasure t) {
@@ -258,11 +276,15 @@ public class Player {
         	return null; // Devuelve null si no se ha podido robar
     }
 
-    public void setEnemy(Player enemy) {
+    public void setEnemy(Player enemy){
         this.enemy = enemy;
     }
+	
+	protected Player getEnemy(){
+		return enemy;
+	}
     
-    private Treasure giveMeATreasure() {
+    private Treasure giveMeATreasure(){
 		Random rn = new Random();
 		
 		if (hiddenTreasures.isEmpty())

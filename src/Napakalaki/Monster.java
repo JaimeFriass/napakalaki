@@ -59,7 +59,7 @@ public class Monster {
 	}
 	
 	int getCombatLevelAgainstCultistPlayer(){
-		return levelChangeAgainstCultistPlayer;
+		return levelChangeAgainstCultistPlayer + combatLevel;
 	}
 
 	boolean onlyLoseLevels() {
