@@ -139,7 +139,7 @@ public class CardDealer {
 		prize = new Prize(3, 1);
 		unusedMonsters.add(new Monster("Familia feliz", 1, badConsequence, prize));
 
-		badConsequence = new BadConsequence("La quinta directiva primaria te obliga a perder 2 niveles y un te soro 2 manos visible", 2,
+		badConsequence = new BadConsequence("La quinta directiva primaria te obliga a perder 2 niveles y un tesoro 2 manos visible", 2,
 				new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS)),
 				0);
 		prize = new Prize(2, 1);
@@ -160,6 +160,37 @@ public class CardDealer {
 				Integer.MAX_VALUE);
 		prize = new Prize(2, 1);
 		unusedMonsters.add(new Monster("Bicéfalo", 21, badConsequence, prize));
+		
+		//Monstruos de los cultist
+		badConsequence = new BadConsequence("Pierdes 1 mano visible", 0, new ArrayList(Arrays.asList(TreasureKind.ONEHAND)), 0);
+		prize = new Prize(3, 1);
+		unusedMonsters.add(new Monster("El mal indecible impronunciable", 10, badConsequence, prize));
+		
+		badConsequence = new BadConsequence("TPierdes tus tesoros visibles. Jajaja", 0, Integer.MAX_VALUE, 0);
+		prize = new Prize(2, 1);
+		unusedMonsters.add(new Monster("Testigos oculares", 6, badConsequence, prize));
+		
+		badConsequence = new BadConsequence("Hoy no es tu día de suerte. Mueres", true);
+		prize = new Prize(2, 5);
+		unusedMonsters.add(new Monster("El gran Cthulhu", 20, badConsequence, prize));
+		
+		badConsequence = new BadConsequence("Tu gobierno te recorta 2 niveles", 2, 0, 0);
+		prize = new Prize(2, 1);
+		unusedMonsters.add(new Monster("Serpiente Politico", 8, badConsequence, prize));
+		
+		badConsequence = new BadConsequence("Pierdes tu casco y tu armadura visible. Pierdes tus manos ocultas", 0, 
+				new ArrayList(Arrays.asList(TreasureKind.HELMET, TreasureKind.ARMOR)),
+				new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS)));
+		prize = new Prize(1, 1);
+		unusedMonsters.add(new Monster("Felpuggoth", 2, badConsequence, prize));
+		
+		badConsequence = new BadConsequence("Pierdes 2 niveles", 2, 0, 0);
+		prize = new Prize(4, 2);
+		unusedMonsters.add(new Monster("Shoggoth", 16, badConsequence, prize));
+		
+		badConsequence = new BadConsequence("Pintalabios negro. Pierdes 2 niveles", 2, 0, 0);
+		prize = new Prize(1, 1);
+		unusedMonsters.add(new Monster("Lolitagooth", 2, badConsequence, prize));
 	}
 	
 	private void initCultistCardDeck(){
