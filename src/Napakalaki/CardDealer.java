@@ -11,6 +11,7 @@ public class CardDealer {
 	private ArrayList<Monster> usedMonsters = new ArrayList();
 	private ArrayList<Treasure> unusedTreasures = new ArrayList();
 	private ArrayList<Treasure> usedTreasures = new ArrayList();
+	private ArrayList<Cultist> unusedCultist = new ArrayList();
 
 	private CardDealer() {
 	}
@@ -138,7 +139,7 @@ public class CardDealer {
 		prize = new Prize(3, 1);
 		unusedMonsters.add(new Monster("Familia feliz", 1, badConsequence, prize));
 
-		badConsequence = new BadConsequence("La quinta directiva primaria te obliga a perder 2 niveles y un te soro 2 manos visible", 2,
+		badConsequence = new BadConsequence("La quinta directiva primaria te obliga a perder 2 niveles y un tesoro 2 manos visible", 2,
 				new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS)),
 				0);
 		prize = new Prize(2, 1);
@@ -159,6 +160,46 @@ public class CardDealer {
 				Integer.MAX_VALUE);
 		prize = new Prize(2, 1);
 		unusedMonsters.add(new Monster("Bicéfalo", 21, badConsequence, prize));
+		
+		//Monstruos de los cultist
+		badConsequence = new BadConsequence("Pierdes 1 mano visible", 0, new ArrayList(Arrays.asList(TreasureKind.ONEHAND)), 0);
+		prize = new Prize(3, 1);
+		unusedMonsters.add(new Monster("El mal indecible impronunciable", 10, badConsequence, prize));
+		
+		badConsequence = new BadConsequence("TPierdes tus tesoros visibles. Jajaja", 0, Integer.MAX_VALUE, 0);
+		prize = new Prize(2, 1);
+		unusedMonsters.add(new Monster("Testigos oculares", 6, badConsequence, prize));
+		
+		badConsequence = new BadConsequence("Hoy no es tu día de suerte. Mueres", true);
+		prize = new Prize(2, 5);
+		unusedMonsters.add(new Monster("El gran Cthulhu", 20, badConsequence, prize));
+		
+		badConsequence = new BadConsequence("Tu gobierno te recorta 2 niveles", 2, 0, 0);
+		prize = new Prize(2, 1);
+		unusedMonsters.add(new Monster("Serpiente Politico", 8, badConsequence, prize));
+		
+		badConsequence = new BadConsequence("Pierdes tu casco y tu armadura visible. Pierdes tus manos ocultas", 0, 
+				new ArrayList(Arrays.asList(TreasureKind.HELMET, TreasureKind.ARMOR)),
+				new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS)));
+		prize = new Prize(1, 1);
+		unusedMonsters.add(new Monster("Felpuggoth", 2, badConsequence, prize));
+		
+		badConsequence = new BadConsequence("Pierdes 2 niveles", 2, 0, 0);
+		prize = new Prize(4, 2);
+		unusedMonsters.add(new Monster("Shoggoth", 16, badConsequence, prize));
+		
+		badConsequence = new BadConsequence("Pintalabios negro. Pierdes 2 niveles", 2, 0, 0);
+		prize = new Prize(1, 1);
+		unusedMonsters.add(new Monster("Lolitagooth", 2, badConsequence, prize));
+	}
+	
+	private void initCultistCardDeck(){
+		unusedCultist.add(new Cultist("Sectario 1", 1));
+		unusedCultist.add(new Cultist("Sectario 2", 2));
+		unusedCultist.add(new Cultist("Sectario 3", 1));
+		unusedCultist.add(new Cultist("Sectario 4", 2));
+		unusedCultist.add(new Cultist("Sectario 5", 1));
+		unusedCultist.add(new Cultist("Sectario 6", 1));
 	}
 
 	// Baraja el mazo de cartas de tesoros unusedTreasures
@@ -169,6 +210,10 @@ public class CardDealer {
 	// Baraja el mazo de cartas de monstruos unusedMonsters
 	private void shuffleMonsters() {
 		Collections.shuffle(unusedMonsters);
+	}
+	
+	private void shuffleCultist(){
+		Collections.shuffle(unusedCultist);
 	}
 
 	public Treasure nextTreasure() {
@@ -205,6 +250,21 @@ public class CardDealer {
 		return siguiente;
 	}
 
+	public Cultist nextCultist(){
+		Cultist siguiente;
+		
+		if(unusedCultist.isEmpty()){
+			initCultistCardDeck();
+			shuffleCultist();
+		}
+		
+		siguiente = unusedCultist.get(0);
+		
+		unusedCultist.remove(siguiente);
+		
+		return siguiente;
+	}
+	
 	public void giveTreasureBack(Treasure t) {
 		usedTreasures.add(t);
 	}
@@ -212,9 +272,15 @@ public class CardDealer {
 	public void giveMonsterBack(Monster m) {
 		usedMonsters.add(m);
 	}
-	/*
+	
     public void initCards() {
-        
+        initMonsterCardDeck();
+		shuffleMonsters();
+		
+		initTreasureCardDeck();
+		shuffleTreasures();
+		
+		initCultistCardDeck();
+		shuffleCultist();
     }
-	 */
 }

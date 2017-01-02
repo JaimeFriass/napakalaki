@@ -1,5 +1,8 @@
 package Napakalaki;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 /**
  *
  * @author jesusjimsa & jaimefriass
@@ -25,4 +28,33 @@ public class CultistPlayer extends Player {
 		return combatLevel;
 	}
 	
+	@Override
+	protected int getOponentLevel(Monster m){
+		return m.getCombatLevelAgainstCultistPlayer();
+	}
+	
+	@Override
+	protected boolean shouldConvert(){		
+		return false;	//Nunca se pasa de cultist a normal
+	}
+	
+	public int getTotalCultistPlayers(){
+		return totalCultistPlayers;
+	}
+	
+	private Treasure giveMeATreasure(){
+		Random rn = new Random();
+		ArrayList<Treasure> visibles = super.getVisibleTreasures();
+		
+		if (visibles.isEmpty())
+		    return null;
+		else
+		    return visibles.get(rn.nextInt(visibles.size() - 1));
+	}
+	
+	private boolean canYouGiveMeATreasure(){
+		Player enemigo = super.getEnemy();
+		
+		return !enemigo.getVisibleTreasures().isEmpty();	//Si no está vacío devuelve true
+	}
 }
