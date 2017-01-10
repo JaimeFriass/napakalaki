@@ -1,5 +1,5 @@
 
-package napakalaki;
+package Napakalaki;
 
 import static java.lang.Integer.min;
 import java.util.ArrayList;
@@ -66,10 +66,12 @@ public class SpecificBadConsequence extends BadConsequence {
         return bc;
     }
     
+	@Override
     public ArrayList<TreasureKind> getSpecificHiddenTreasures() {
         return specificHiddenTreasures;
     }
     
+	@Override
     public ArrayList<TreasureKind> getSpecificVisibleTreasures() {
         return specificVisibleTreasures;
     }

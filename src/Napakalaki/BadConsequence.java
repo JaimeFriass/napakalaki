@@ -28,6 +28,11 @@ public class BadConsequence {
 		this.text = text;
 		this.death = death;
 	}
+	
+	BadConsequence(String text, int levels){
+		this.text = text;
+		this.levels = levels;
+	}
 
 	BadConsequence(String text, int levels, ArrayList<Treasure> tVisible, ArrayList<Treasure> tHidden) {
 		this.text = text;
