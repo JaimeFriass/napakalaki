@@ -42,7 +42,8 @@ public class CultistPlayer extends Player {
 		return totalCultistPlayers;
 	}
 	
-	private Treasure giveMeATreasure(){
+	@Override
+	protected Treasure giveMeATreasure(){
 		Random rn = new Random();
 		ArrayList<Treasure> visibles = super.getVisibleTreasures();
 		
@@ -52,7 +53,8 @@ public class CultistPlayer extends Player {
 		    return visibles.get(rn.nextInt(visibles.size() - 1));
 	}
 	
-	private boolean canYouGiveMeATreasure(){
+	@Override
+	protected boolean canYouGiveMeATreasure(){
 		Player enemigo = super.getEnemy();
 		
 		return !enemigo.getVisibleTreasures().isEmpty();	//Si no está vacío devuelve true

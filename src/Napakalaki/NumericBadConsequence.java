@@ -1,5 +1,5 @@
 
-package napakalaki;
+package Napakalaki;
 
 import java.util.ArrayList;
 

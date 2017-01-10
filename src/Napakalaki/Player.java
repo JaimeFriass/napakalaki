@@ -5,14 +5,16 @@ import java.util.Random;
 
 public class Player { 
     private String name;
-    private int level;
+	//EXAMEN
+    protected int level;
     private boolean dead = true;
     private boolean canISteal = true;
     private BadConsequence pendingBadConsequence;
     private Player enemy;
     private final int MAXLEVEL = 10;
-    private ArrayList<Treasure> hiddenTreasures = new ArrayList();
-    private ArrayList<Treasure> visibleTreasures = new ArrayList();
+	//EXAMEN
+    protected ArrayList<Treasure> hiddenTreasures = new ArrayList();
+    protected ArrayList<Treasure> visibleTreasures = new ArrayList();
     
 	@Override
     public String toString() {
@@ -259,6 +261,7 @@ public class Player {
     public int getLevels() {
         return level;
     }
+	
     public Treasure stealTreasure() {
     	Treasure treasure = new Treasure();
         boolean canI = enemy.canISteal();
@@ -284,7 +287,8 @@ public class Player {
 		return enemy;
 	}
     
-    private Treasure giveMeATreasure(){
+	//EXAMEN
+    protected Treasure giveMeATreasure(){
 		Random rn = new Random();
 		
 		if (hiddenTreasures.isEmpty())
@@ -298,13 +302,15 @@ public class Player {
         return canISteal;
     }
     
+	//EXAMEN
     // Devuelve true si el jugador tiene tesoros para ser robados por otro jugador
-    private boolean canYouGiveMeATreasure() {
+    protected boolean canYouGiveMeATreasure(){
         return !(visibleTreasures == null && hiddenTreasures == null);
     }
     
+	//EXAMEN
     // Si el jugador roba un tesoro
-    private void haveStolen() {
+    protected void haveStolen() {
         canISteal = false;
     }
 
