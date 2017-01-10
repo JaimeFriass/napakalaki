@@ -9,13 +9,14 @@ import java.util.ArrayList;
  */
 public class BadConsequence {
 
-	private String text;
-	private int levels;
+	protected String text;
+	protected int levels;
 	private int nVisibleTreasures;
 	private int nHiddenTreasures;
+	public static final int MAXTREASURES = 4;
 	private boolean death;
-	private ArrayList<Treasure> specificHiddenTreasures = new ArrayList();
-	private ArrayList<Treasure> specificVisibleTreasures = new ArrayList();
+	protected ArrayList<Treasure> specificHiddenTreasures = new ArrayList();
+	protected ArrayList<Treasure> specificVisibleTreasures = new ArrayList();
 
 	BadConsequence(String text, int levels, int nVisible, int nHidden) {
 		this.text = text;
@@ -168,10 +169,10 @@ public class BadConsequence {
 		    nHiddenTreasures = h.size();
 		
 		for (int i = 0; i < specificVisibleTreasures.size(); i++) {
-		    if ( specificVisible.get(i) != v.get(i) ) {
-			specificVisible.remove(i);
-			i--;
-		    }
+			if (specificVisible.get(i) != v.get(i)) {
+				specificVisible.remove(i);
+				i--;
+			}
 		}
 		
 		BadConsequence bc = new BadConsequence(text, 0, specificVisible, specificHidden);
