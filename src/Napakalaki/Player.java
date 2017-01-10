@@ -11,7 +11,7 @@ public class Player {
     private boolean canISteal = true;
     private BadConsequence pendingBadConsequence;
     private Player enemy;
-    private final int MAXLEVEL = 10;
+    public static final int MAXLEVEL = 10;
 	//EXAMEN
     protected ArrayList<Treasure> hiddenTreasures = new ArrayList();
     protected ArrayList<Treasure> visibleTreasures = new ArrayList();
