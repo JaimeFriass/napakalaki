@@ -9,7 +9,7 @@ public class SpecificBadConsequence extends BadConsequence {
     private ArrayList<TreasureKind> specificHiddenTreasures = new ArrayList();
 
 	public SpecificBadConsequence(String name, int lvls, ArrayList<TreasureKind> specificVisible, ArrayList<TreasureKind> specificHidden) {
-		super(name, lvls);
+		super(name, lvls, false);
 		this.specificVisibleTreasures = new ArrayList();
 		this.specificHiddenTreasures = new ArrayList();
 		this.specificVisibleTreasures = specificVisible;

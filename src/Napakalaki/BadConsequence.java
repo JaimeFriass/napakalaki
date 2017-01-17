@@ -13,16 +13,6 @@ public abstract class BadConsequence {
 	protected int levels;
 	private boolean death;
 	
-	BadConsequence(String text, int levels) {
-		this.text = text;
-		this.levels = levels;
-	}
-
-	BadConsequence(String text, boolean death) {
-		this.text = text;
-		this.death = death;
-	}
-	
 	BadConsequence(String text, int levels, boolean death){
 		this.text = text;
 		this.levels = levels;
@@ -56,5 +46,6 @@ public abstract class BadConsequence {
         // Devuelve true cuando no se pierden tesoros
 	abstract boolean isEmpty();
 
+	@Override
 	public abstract String toString();
 }

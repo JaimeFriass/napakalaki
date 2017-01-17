@@ -60,36 +60,36 @@ public class CardDealer {
 	// las cartas de unusedMonsters proporcionadas.
 	public void initMonsterCardDeck() {
 		BadConsequence badConsequence;
-		badConsequence = new BadConsequence("Pierdes tu armadura visible y otra oculta", 0,
+		badConsequence = new SpecificBadConsequence("Pierdes tu armadura visible y otra oculta", 0,
 				new ArrayList(Arrays.asList(TreasureKind.ARMOR)),
 				new ArrayList(Arrays.asList(TreasureKind.ARMOR)));
 		Prize prize = new Prize(1, 1);
 		unusedMonsters.add(new Monster("Byakhees de bonanza", 8, badConsequence, prize));
 
-		badConsequence = new BadConsequence("Embobados con el lindo primigenio te descartas de tu casco visible", 0,
+		badConsequence = new SpecificBadConsequence("Embobados con el lindo primigenio te descartas de tu casco visible", 0,
 				new ArrayList(Arrays.asList(TreasureKind.HELMET)),
-				0);
+				new ArrayList());
 		prize = new Prize(1, 1);
 		unusedMonsters.add(new Monster("Tenochtitlan", 2, badConsequence, prize));
 
-		badConsequence = new BadConsequence("El primordial bostezo contagioso. Pierdes el calzado visible", 0,
+		badConsequence = new SpecificBadConsequence("El primordial bostezo contagioso. Pierdes el calzado visible", 0,
 				new ArrayList(Arrays.asList(TreasureKind.SHOES)),
-				0);
+				new ArrayList());
 		prize = new Prize(1, 1);
 		unusedMonsters.add(new Monster("El sopor de Dunwich", 2, badConsequence, prize));
 
-		badConsequence = new BadConsequence("Te atrapan para llevarte de fiesta y te dejan caer en mitad del vuelo. "
+		badConsequence = new SpecificBadConsequence("Te atrapan para llevarte de fiesta y te dejan caer en mitad del vuelo. "
 				+ "Descarta 1 mano visible y 1 mano oculta", 0,
 				new ArrayList(Arrays.asList(TreasureKind.ONEHAND)),
 				new ArrayList(Arrays.asList(TreasureKind.ONEHAND)));
 		prize = new Prize(4, 2);
 		unusedMonsters.add(new Monster("Demonios de Magaluf", 2, badConsequence, prize));
 
-		badConsequence = new BadConsequence("Pierdes todos tus tesoros visibles", 0, Integer.MAX_VALUE, 0);
+		badConsequence = new NumericBadConsequence("Pierdes todos tus tesoros visibles", 0, NumericBadConsequence.MAXTREASURES, 0);
 		prize = new Prize(3, 1);
 		unusedMonsters.add(new Monster("El gorrón en el umbral", 13, badConsequence, prize));
 
-		badConsequence = new BadConsequence("Pierdes la armadura visible", 0,
+		badConsequence = new SpecificBadConsequence("Pierdes la armadura visible", 0,
 				new ArrayList(Arrays.asList(TreasureKind.ARMOR)),
 				0);
 		prize = new Prize(2, 1);
