@@ -1,6 +1,5 @@
 package Napakalaki;
 
-import static java.lang.Integer.min;
 import java.util.ArrayList;
 
 public class SpecificBadConsequence extends BadConsequence {
@@ -16,22 +15,23 @@ public class SpecificBadConsequence extends BadConsequence {
 		this.specificHiddenTreasures = specificHidden;
 	}
 
-	public SpecificBadConsequence adjustToFitTreasureList(ArrayList<Treasure> tvisibles, ArrayList<Treasure> thidden) {
+	@Override
+	public SpecificBadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h) {
 		ArrayList<TreasureKind> visible_adjust = specificVisibleTreasures;
 		ArrayList<TreasureKind> hidden_adjust = specificHiddenTreasures;
 		
 		SpecificBadConsequence devuelve = new SpecificBadConsequence(text, levels, new ArrayList(), new ArrayList()  );
 		
-		for (int i = 0; i < tvisibles.size(); i++) {
-		    if ( visible_adjust.contains( tvisibles.get(i).getType() ) ) {
-			devuelve.specificVisibleTreasures.add(tvisibles.get(i).getType());
-			visible_adjust.remove(tvisibles.get(i).getType() );
+		for (int i = 0; i < v.size(); i++) {
+		    if ( visible_adjust.contains(v.get(i).getType() ) ) {
+			devuelve.specificVisibleTreasures.add(v.get(i).getType());
+			visible_adjust.remove(v.get(i).getType() );
 		    }
 		}
-		for (int i = 0; i < thidden.size(); i++) {
-		    if ( hidden_adjust.contains ( thidden.get(i).getType() ) ) {
-			devuelve.specificHiddenTreasures.add(thidden.get(i).getType());
-			hidden_adjust.remove(thidden.get(i).getType() );
+		for (int i = 0; i < h.size(); i++) {
+		    if ( hidden_adjust.contains (h.get(i).getType() ) ) {
+			devuelve.specificHiddenTreasures.add(h.get(i).getType());
+			hidden_adjust.remove(h.get(i).getType() );
 		    }
 		}
 		return devuelve;
@@ -45,22 +45,26 @@ public class SpecificBadConsequence extends BadConsequence {
 		return specificVisibleTreasures;
 	}
 
+	@Override
 	public void substractVisibleTreasure(Treasure t) {
 		if (specificVisibleTreasures != null) {
 			specificVisibleTreasures.remove(t.getType());
 		}
 	}
 
+	@Override
 	public void substractHiddenTreasure(Treasure t) {
 		if (specificHiddenTreasures != null) {
 			specificHiddenTreasures.remove(t.getType());
 		}
 	}
 	
+	@Override
 	public boolean isEmpty() {
 	    return specificVisibleTreasures.isEmpty() && specificHiddenTreasures.isEmpty();
 	}
 
+	@Override
 	public String toString() {
 		String description = "--- Mal Rollo Específico --- \n" + "Texto: " + text + "\n";
 
