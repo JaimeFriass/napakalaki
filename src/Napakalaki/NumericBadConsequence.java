@@ -36,7 +36,7 @@ public class NumericBadConsequence extends BadConsequence{
             this.nHiddenTreasures -= 1;
     }
     
-    public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h) {
+    public NumericBadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h) {
 	// Devuelve un nuevo objeto mal rollo que se ajusta a las posibilidades del jugador.
 	int nVisible = nVisibleTreasures;
 	int nHidden = nHiddenTreasures;
