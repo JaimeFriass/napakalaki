@@ -62,24 +62,24 @@ public class Monster {
 		return levelChangeAgainstCultistPlayer + combatLevel;
 	}
 
-	boolean onlyLoseLevels() {
-		return bc.onlyLoseLevels();
-	}
+//	boolean onlyLoseLevels() {
+//		return bc.onlyLoseLevels();
+//	}
 
 	boolean winLevelsFrom(int lvl) {
 		return prize.winLevelsFrom(lvl);
 	}
 
-	boolean loseTreasure(Treasure treasure, boolean visible) {
-		return bc.loseTreasure(treasure, visible);
-	}
+//	boolean loseTreasure(Treasure treasure, boolean visible) {
+//		return bc.loseTreasure(treasure, visible);
+//	}
 	
 	int getLevelsGained(){
 		return bc.getLevels();
 	}
 	
 	int getTreasuresGained(){
-		return bc.getTVisible();
+		return this.prize.getTreasures();
 	}
 
 	@Override

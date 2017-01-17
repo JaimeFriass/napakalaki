@@ -22,22 +22,26 @@ public class NumericBadConsequence extends BadConsequence {
 		return nHiddenTreasures;
 	}
 
+	@Override
 	public boolean isEmpty() {
 		return (nVisibleTreasures == 0 && nHiddenTreasures == 0);
 	}
 
+	@Override
 	public void substractVisibleTreasure(Treasure t) {
 		if (this.nVisibleTreasures > 0) {
 			this.nVisibleTreasures -= 1;
 		}
 	}
 
+	@Override
 	public void substractHiddenTreasure(Treasure t) {
 		if (this.nHiddenTreasures > 0) {
 			this.nHiddenTreasures -= 1;
 		}
 	}
 
+	@Override
 	public NumericBadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h) {
 		// Devuelve un nuevo objeto mal rollo que se ajusta a las posibilidades del jugador.
 		int nVisible = nVisibleTreasures;
