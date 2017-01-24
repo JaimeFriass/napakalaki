@@ -11,8 +11,10 @@ public class Napakalaki {
 	private final ArrayList<Player> players = new ArrayList();
 	private static final CardDealer CD = CardDealer.getInstance();
 	private Boolean primera_jugada = true;
+	
 
-	private Napakalaki() {
+	public Napakalaki() {
+		
 	}
 
 	private void initPlayers(ArrayList<String> names) {
