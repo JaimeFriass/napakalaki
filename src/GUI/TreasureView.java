@@ -44,12 +44,10 @@ public class TreasureView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         bonusNumber = new javax.swing.JLabel();
         treasureName = new javax.swing.JLabel();
         treasureKindName = new javax.swing.JLabel();
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/jesusjimsa/Dropbox (Personal)/Documentos/Universidad/2 - Primer cuatrimestre/Programación y Diseño Orientado a Objetos/Prácticas/napakalaki/src/GUI/42553.jpg")); // NOI18N
+        treasureImage = new javax.swing.JLabel();
 
         bonusNumber.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         bonusNumber.setForeground(new java.awt.Color(255, 255, 102));
@@ -61,23 +59,24 @@ public class TreasureView extends javax.swing.JPanel {
         treasureKindName.setFont(new java.awt.Font("Comic Sans MS", 2, 18)); // NOI18N
         treasureKindName.setText("jLabel2");
 
+        treasureImage.setText("(FOTO)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(treasureKindName)
-                            .addComponent(bonusNumber)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(treasureName))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabel1)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(treasureImage, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(32, 32, 32)
+                            .addComponent(treasureName))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(80, 80, 80)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(treasureKindName)
+                                .addComponent(bonusNumber)))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -90,15 +89,15 @@ public class TreasureView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bonusNumber)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(treasureImage, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bonusNumber;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel treasureImage;
     private javax.swing.JLabel treasureKindName;
     private javax.swing.JLabel treasureName;
     // End of variables declaration//GEN-END:variables

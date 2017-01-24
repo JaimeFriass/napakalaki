@@ -5,24 +5,19 @@
  */
 package GUI;
 
-import Napakalaki.Napakalaki;
+import Napakalaki.*;
 
 /**
  *
  * @author jesusjimsa
  */
-public class NapakalakiView extends javax.swing.JFrame {
-	
-	Napakalaki napakalakiModel = new Napakalaki();
-	
-	public void setNapakalaki(Napakalaki napakalaki){
-		napakalakiModel = napakalaki;
-	}
-	
+public class CultistView extends javax.swing.JPanel {
+	private Cultist cultistModel;
+
 	/**
-	 * Creates new form NapakalakiView
+	 * Creates new form CultistView
 	 */
-	public NapakalakiView() {
+	public CultistView() {
 		initComponents();
 	}
 
@@ -33,25 +28,18 @@ public class NapakalakiView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 995, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 708, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-	public void showView(){
-		this.setVisible(true);
-	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
