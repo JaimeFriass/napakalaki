@@ -41,34 +41,34 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        textoJugadores = new javax.swing.JLabel();
+        textoj2 = new javax.swing.JLabel();
+        textoj3 = new javax.swing.JLabel();
+        textoj1 = new javax.swing.JLabel();
         name1 = new javax.swing.JTextField();
         name3 = new javax.swing.JTextField();
         name2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        Play = new javax.swing.JButton();
+        Cancel = new javax.swing.JButton();
+        Kitty = new javax.swing.JLabel();
+        winnie = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(153, 0, 204));
         setForeground(java.awt.Color.pink);
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 255));
-        jLabel1.setText("Jugadores");
+        textoJugadores.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        textoJugadores.setForeground(new java.awt.Color(255, 0, 255));
+        textoJugadores.setText("Jugadores");
 
-        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        jLabel4.setText("Jugador 2 :D");
+        textoj2.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        textoj2.setText("Jugador 2 :D");
 
-        jLabel6.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        jLabel6.setText("Jugador 3 XD");
+        textoj3.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        textoj3.setText("Jugador 3 XD");
 
-        jLabel7.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        jLabel7.setText("Jugador 1 :)");
+        textoj1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        textoj1.setText("Jugador 1 :)");
 
         name1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,26 +76,38 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-        jButton1.setText("Play ;D");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        name3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                name3ActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 0, 51));
-        jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-        jButton2.setText("Cancel :(");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        name2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                name2ActionPerformed(evt);
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("/Users/jesusjimsa/Dropbox (Personal)/Documentos/Universidad/2 - Primer cuatrimestre/Programación y Diseño Orientado a Objetos/Prácticas/napakalaki/src/GUI/kitty_2.png")); // NOI18N
+        Play.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        Play.setText("Play ;D");
+        Play.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PlayActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/jesusjimsa/Dropbox (Personal)/Documentos/Universidad/2 - Primer cuatrimestre/Programación y Diseño Orientado a Objetos/Prácticas/napakalaki/src/GUI/7843.png")); // NOI18N
+        Cancel.setBackground(new java.awt.Color(255, 0, 51));
+        Cancel.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        Cancel.setText("Cancel :(");
+        Cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelActionPerformed(evt);
+            }
+        });
+
+        Kitty.setIcon(new javax.swing.ImageIcon("/Users/jesusjimsa/Dropbox (Personal)/Documentos/Universidad/2 - Primer cuatrimestre/Programación y Diseño Orientado a Objetos/Prácticas/napakalaki/src/GUI/kitty_2.png")); // NOI18N
+
+        winnie.setIcon(new javax.swing.ImageIcon("/Users/jesusjimsa/Dropbox (Personal)/Documentos/Universidad/2 - Primer cuatrimestre/Programación y Diseño Orientado a Objetos/Prácticas/napakalaki/src/GUI/7843.png")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,29 +116,29 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)
-                        .addGap(65, 65, 65)
-                        .addComponent(jLabel1)
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6))
+                            .addComponent(textoj1)
+                            .addComponent(textoj2)
+                            .addComponent(textoj3))
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(name3, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(name2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(name1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                        .addGap(73, 73, 73)
+                        .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(74, 74, 74)
+                        .addComponent(Play, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(winnie)
+                        .addGap(65, 65, 65)
+                        .addComponent(textoJugadores)
+                        .addGap(35, 35, 35)
+                        .addComponent(Kitty)))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,50 +147,63 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)))
+                            .addComponent(winnie)
+                            .addComponent(Kitty)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addComponent(jLabel1)))
+                        .addComponent(textoJugadores)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                    .addComponent(textoj1)
                     .addComponent(name1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
+                    .addComponent(textoj2)
                     .addComponent(name2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(textoj3)
                     .addComponent(name3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Play, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void PlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayActionPerformed
         //Añadir los nombres de los jugadores
-		names.add (name1.getText() );
-		names.add (name2.getText() );
-		names.add (name3.getText() );
+		if (!name1.getText().isEmpty())
+			names.add (name1.getText());
+		
+		if (!name2.getText().isEmpty())
+			names.add (name2.getText());
+		
+		if (!name3.getText().isEmpty())
+			names.add (name3.getText());
 		
 		//Cerrar la ventana
 		this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_PlayActionPerformed
 
     private void name1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_name1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_CancelActionPerformed
+
+    private void name3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_name3ActionPerformed
+
+    private void name2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_name2ActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -190,16 +215,16 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton Cancel;
+    private javax.swing.JLabel Kitty;
+    private javax.swing.JButton Play;
     private javax.swing.JTextField name1;
     private javax.swing.JTextField name2;
     private javax.swing.JTextField name3;
+    private javax.swing.JLabel textoJugadores;
+    private javax.swing.JLabel textoj1;
+    private javax.swing.JLabel textoj2;
+    private javax.swing.JLabel textoj3;
+    private javax.swing.JLabel winnie;
     // End of variables declaration//GEN-END:variables
 }
