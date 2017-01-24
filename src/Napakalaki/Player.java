@@ -2,6 +2,7 @@ package Napakalaki;
 
 import java.util.ArrayList;
 import java.util.Random;
+import GUI.Dice;
 
 public class Player {
 
