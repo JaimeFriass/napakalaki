@@ -13,8 +13,11 @@ public class Cultist {
 		this.gainedLevels = gainedLevels;
 	}
 	
-	int getGainedLevels(){
+	public int getGainedLevels(){
 		return gainedLevels;
 	}
 	
+	public String getName(){
+		return name;
+	}
 }

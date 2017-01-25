@@ -8,7 +8,6 @@ package GUI;
 import Napakalaki.*;
 import java.awt.Component;
 import java.util.ArrayList;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -242,16 +241,34 @@ public class PlayerView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void descartarTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descartarTActionPerformed
-        
+        //ArrayList<Treasure> visibles = visibleTreasures;
     }//GEN-LAST:event_descartarTActionPerformed
 
     private void hacerVisibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hacerVisibleActionPerformed
         ArrayList<Treasure> selHidden = getSelectedTreasures(hiddenTreasures);
-        napakalakiModel.makeTreasureVisible(selHidden);
-        setPlayer( napakalakiModel.getCurrentPlayer() );
+		
+        napakalakiModel.makeTreasuresVisible(selHidden);
+        
+		setPlayer(napakalakiModel.getCurrentPlayer());
+		
+		repaint();
         // this.napakalakiView.checkBadConsequence();
     }//GEN-LAST:event_hacerVisibleActionPerformed
 
+	ArrayList<Treasure> selectedTreasures(JPanel panel){
+		ArrayList<Treasure> elegidos = new ArrayList();
+		TreasureView tv;
+		
+		for (Component c : panel.getComponents()) {
+			tv = (TreasureView) c;
+
+			if (tv.isSelected()) {
+				elegidos.add(tv.getTreasure());
+			}
+		}
+
+		return elegidos;
+	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton descartarT;

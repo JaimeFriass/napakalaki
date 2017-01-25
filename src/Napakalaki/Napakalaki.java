@@ -111,11 +111,13 @@ public class Napakalaki {
 			CD.giveTreasureBack(treasure);
 		}
 	}
-	/*
-	public void makeTreasureVisible(ArrayList<Treasure> treasures) {
-
+	
+	public void makeTreasuresVisible(ArrayList<Treasure> treasures) {
+		for (Treasure treasure : treasures) {
+			makeTreasuresVisible(treasures);
+		}
 	}
-	*/
+	
 	public void initGame(ArrayList<String> players) {
 		initPlayers(players);
 		setEnemies();

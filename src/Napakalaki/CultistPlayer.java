@@ -59,4 +59,8 @@ public class CultistPlayer extends Player {
 		
 		return !enemigo.getVisibleTreasures().isEmpty();	//Si no está vacío devuelve true
 	}
+	
+	public Cultist getCultistCard(){
+		return myCultistCard;
+	}
 }
