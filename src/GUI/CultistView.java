@@ -12,27 +12,32 @@ import Napakalaki.*;
  * @author jesusjimsa
  */
 public class CultistView extends javax.swing.JPanel {
+
 	private Cultist cultistModel;
-        private boolean selected = false;
-        
-        public boolean isSelected() {
-            return selected;
-        }
-        
-        public Cultist getCultist() {
-            return cultistModel;
-        }
-        
-        public void setCultist(Player p) {
-            if (p instanceof CultistPlayer) {
-                CultistPlayer cp = (CultistPlayer) p;
-                this.setVisible(true);
-                cultistModel = cp.getCultistCard();
-                nameText.setText(cultistModel.getName() );
-                levelDisplay.setText(Integer.toString(cultistModel.getGainedLevels()));
-                
-            }
-        }
+	private boolean selected = false;
+
+	public boolean isSelected() {
+		return selected;
+	}
+
+	public Cultist getCultist() {
+		return cultistModel;
+	}
+
+	public void setCultist(Player p) {
+		if (p instanceof CultistPlayer) {
+			CultistPlayer cp = (CultistPlayer) p;
+			
+			this.setVisible(true);
+			
+			cultistModel = cp.getCultistCard();
+			nameText.setText(cultistModel.getName());
+			levelDisplay.setText(Integer.toString(cultistModel.getGainedLevels()));
+		}
+		else{
+			this.setVisible(false);
+		}
+	}
 
 	/**
 	 * Creates new form CultistView
