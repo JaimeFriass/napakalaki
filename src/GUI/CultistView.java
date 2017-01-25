@@ -13,6 +13,26 @@ import Napakalaki.*;
  */
 public class CultistView extends javax.swing.JPanel {
 	private Cultist cultistModel;
+        private boolean selected = false;
+        
+        public boolean isSelected() {
+            return selected;
+        }
+        
+        public Cultist getCultist() {
+            return cultistModel;
+        }
+        
+        public void setCultist(Player p) {
+            if (p instanceof CultistPlayer) {
+                CultistPlayer cp = (CultistPlayer) p;
+                this.setVisible(true);
+                cultistModel = cp.getCultistCard();
+                nameText.setText(cultistModel.getName() );
+                levelDisplay.setText(Integer.toString(cultistModel.getGainedLevels()));
+                
+            }
+        }
 
 	/**
 	 * Creates new form CultistView
@@ -28,19 +48,62 @@ public class CultistView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        nameText = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        levelDisplay = new javax.swing.JLabel();
+
+        nameText.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        nameText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nameText.setText("NombreCultista");
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Nivel"));
+
+        levelDisplay.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        levelDisplay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        levelDisplay.setText("#");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(levelDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(levelDisplay, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(nameText, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(nameText, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(51, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel levelDisplay;
+    private javax.swing.JLabel nameText;
     // End of variables declaration//GEN-END:variables
 }
