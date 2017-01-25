@@ -23,11 +23,11 @@ public class Main {
 		Dice.createInstance(napakalakiView);
 		ArrayList<String> names = new ArrayList();
 		
-		napakalakiView.setNapakalaki(game);
 		names = namesCapture.getNames();
 		game.initGame(names);
+		napakalakiView.setNapakalaki(game);
 		
-		napakalakiView.setVisible(true);
 		napakalakiView.showView();
+		napakalakiView.setVisible(true);
 	}
 }
