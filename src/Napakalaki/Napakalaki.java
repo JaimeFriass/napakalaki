@@ -49,7 +49,7 @@ public class Napakalaki {
 		return players.get(result);
 	}
 
-	private boolean nextTurnAllowed() {
+	public boolean nextTurnAllowed() {
 		if (currentPlayer == null) {
 			return true;
 		} else {
@@ -111,10 +111,10 @@ public class Napakalaki {
 			CD.giveTreasureBack(treasure);
 		}
 	}
-	
+
 	public void makeTreasuresVisible(ArrayList<Treasure> treasures) {
 		for (Treasure treasure : treasures) {
-			makeTreasuresVisible(treasures);
+			currentPlayer.makeTreasureVisible(treasure);
 		}
 	}
 	

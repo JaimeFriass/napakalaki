@@ -109,9 +109,6 @@
             <EtchetBorder/>
           </Border>
         </Property>
-        <Property name="prize" type="Napakalaki.Prize" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="default"/>
-        </Property>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">

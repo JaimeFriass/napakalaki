@@ -42,19 +42,19 @@ public class Monster {
 		levelChangeAgainstCultistPlayer = IC;
 	}
 
-	String getName() {
+	public String getName() {
 		return name;
 	}
 
-	int getCombatLevel() {
+	public int getCombatLevel() {
 		return combatLevel;
 	}
 
-	BadConsequence getBadConsequence() {
+	public BadConsequence getBadConsequence() {
 		return bc;
 	}
 
-	Prize getPrize() {
+	public Prize getPrize() {
 		return prize;
 	}
 	
