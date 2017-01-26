@@ -4,7 +4,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="cc" green="0" red="99" type="rgb"/>
+      <Color blue="cc" green="cc" red="ff" type="rgb"/>
     </Property>
     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="af" green="af" id="pink" palette="1" red="ff" type="palette"/>
@@ -182,18 +182,8 @@
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="Kitty">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/Users/jesusjimsa/Dropbox (Personal)/Documentos/Universidad/2 - Primer cuatrimestre/Programaci&#xf3;n y Dise&#xf1;o Orientado a Objetos/Pr&#xe1;cticas/napakalaki/src/GUI/kitty_2.png"/>
-        </Property>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="winnie">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/Users/jesusjimsa/Dropbox (Personal)/Documentos/Universidad/2 - Primer cuatrimestre/Programaci&#xf3;n y Dise&#xf1;o Orientado a Objetos/Pr&#xe1;cticas/napakalaki/src/GUI/7843.png"/>
-        </Property>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>
