@@ -16,6 +16,7 @@ public class Monster {
 	private BadConsequence bc;
 	private Prize prize;
 	private int levelChangeAgainstCultistPlayer = 0;
+	private int icon;
 
 	//Constructor normal
 	Monster(String name, int level, BadConsequence bc, Prize prize) {
@@ -80,6 +81,14 @@ public class Monster {
 	
 	int getTreasuresGained(){
 		return this.prize.getTreasures();
+	}
+	
+	public void setIcon(int icon){
+		this.icon = icon;
+	}
+	
+	public int getIcon(){
+		return icon;
 	}
 
 	@Override

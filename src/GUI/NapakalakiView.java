@@ -130,8 +130,12 @@ public class NapakalakiView extends javax.swing.JFrame {
 		}
 	}
 	
+	public void showView() {
+		this.setVisible(true);
+	}
+	
     private void meetMonsterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetMonsterButtonActionPerformed
-		monsterView.ShowMonster();
+		monsterView.showMonster();
 		combatButton.setEnabled(true);
 		meetMonsterButton.setEnabled(false);
 		playerView.ChangeMakeVisibleButton(false);
