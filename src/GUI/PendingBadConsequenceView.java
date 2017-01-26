@@ -5,17 +5,34 @@
  */
 package GUI;
 
+import Napakalaki.BadConsequence;
+
 /**
  *
  * @author JaimeFriass
  */
 public class PendingBadConsequenceView extends javax.swing.JPanel {
-
+    
+    BadConsequence bcmodel;
     /**
      * Creates new form PendingBadConsequenceView
      */
     public PendingBadConsequenceView() {
         initComponents();
+    }
+    
+    public void setBadConsequence (BadConsequence b) {
+        bcmodel = b;
+        if (b != null) {
+            if (b.isEmpty())
+                display.setText(" ");
+            else
+                display.setText(bcmodel.toString());
+        } else {
+            display.setText(" ");
+        }
+        
+        repaint();
     }
 
     /**
@@ -27,42 +44,31 @@ public class PendingBadConsequenceView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        pendingBC = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        display = new javax.swing.JTextArea();
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setToolTipText("");
 
-        jLabel1.setText("PendingBadConsequenceView");
-
-        pendingBC.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        pendingBC.setText("Waiting....");
+        display.setColumns(20);
+        display.setRows(5);
+        jScrollPane1.setViewportView(display);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
-                .addComponent(pendingBC, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pendingBC, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 25, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel pendingBC;
+    private javax.swing.JTextArea display;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

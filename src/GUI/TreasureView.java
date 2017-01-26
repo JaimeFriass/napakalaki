@@ -6,6 +6,7 @@
 package GUI;
 
 import Napakalaki.Treasure;
+import Napakalaki.TreasureKind;
 
 /**
  *
@@ -21,18 +22,33 @@ public class TreasureView extends javax.swing.JPanel {
 	 */
 	public TreasureView() {
 		initComponents();
+                repaint();
 	}
 	
 	public void setTreasure(Treasure t) {
 		
 		treasureModel = t;
-		String nameText = "<html>" + treasureModel.getName() + "</html>";
-		treasureName.setText(nameText);
+		treasureName.setText(treasureModel.getName());
+		bonusNumber.setText(Integer.toString(treasureModel.getBonus()));
 		
-		String bonusText = Integer.toString(treasureModel.getBonus());
-		bonusNumber.setText(bonusText);
-		
-		treasureKindName.setText(treasureModel.getType().toString());
+                TreasureKind type = treasureModel.getType();
+                switch (type) {
+                    case ARMOR:
+                        treasureKindName.setText("ARMOR");
+                        break;
+                    case ONEHAND:
+                        treasureKindName.setText("ONE HAND");
+                        break;
+                    case BOTHHANDS:
+                        treasureKindName.setText("BOTH HANDS");
+                        break;
+                    case SHOES:
+                        treasureKindName.setText("SHOES");
+                        break;
+                    case HELMET:
+                        treasureKindName.setText("HELMET");
+                        break;
+                }
 		
 		// treasureImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(treasureModel.getIcon)));
                 formMouseClicked(null);
@@ -57,75 +73,69 @@ public class TreasureView extends javax.swing.JPanel {
         bonusNumber = new javax.swing.JLabel();
         treasureName = new javax.swing.JLabel();
         treasureKindName = new javax.swing.JLabel();
-        treasureImage = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 255, 204));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
             }
         });
 
-        bonusNumber.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        bonusNumber.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         bonusNumber.setForeground(new java.awt.Color(255, 255, 102));
+        bonusNumber.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         bonusNumber.setText("Bonus");
 
-        treasureName.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        treasureName.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         treasureName.setText("Nombre Tesoro");
 
-        treasureKindName.setFont(new java.awt.Font("Comic Sans MS", 2, 18)); // NOI18N
-        treasureKindName.setText("jLabel2");
-
-        treasureImage.setText("(FOTO)");
+        treasureKindName.setFont(new java.awt.Font("Comic Sans MS", 2, 10)); // NOI18N
+        treasureKindName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        treasureKindName.setText("Tipo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(treasureImage, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(32, 32, 32)
-                            .addComponent(treasureName))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(80, 80, 80)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(treasureKindName)
-                                .addComponent(bonusNumber)))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(treasureName)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(treasureKindName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bonusNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(9, 9, 9)
                 .addComponent(treasureName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(treasureKindName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bonusNumber)
-                .addGap(18, 18, 18)
-                .addComponent(treasureImage, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                .addGap(25, 25, 25))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         if (selected == true) {
             selected = false;
+            setBackground(new java.awt.Color(204,204,204));
+            repaint();
         }
         else {
             selected = true;
+            setBackground(new java.awt.Color(153,204,255));
+            repaint();
         }
-        
-        setOpaque(this.selected);
-        this.repaint();
     }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bonusNumber;
-    private javax.swing.JLabel treasureImage;
     private javax.swing.JLabel treasureKindName;
     private javax.swing.JLabel treasureName;
     // End of variables declaration//GEN-END:variables

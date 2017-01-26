@@ -25,6 +25,8 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
 	public PlayerNamesCapture(JFrame parent, boolean modal) {
 		super(parent, modal);
 		initComponents();
+                setTitle("Comienzo Napakalaki");
+                setLocationRelativeTo(null);
 		this.addWindowListener (new WindowAdapter() {
 		
 			@Override
@@ -55,7 +57,7 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
         winnie = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setBackground(new java.awt.Color(153, 0, 204));
+        setBackground(new java.awt.Color(255, 204, 204));
         setForeground(java.awt.Color.pink);
 
         textoJugadores.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
@@ -105,10 +107,6 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
                 CancelActionPerformed(evt);
             }
         });
-
-        Kitty.setIcon(new javax.swing.ImageIcon("/Users/jesusjimsa/Dropbox (Personal)/Documentos/Universidad/2 - Primer cuatrimestre/Programación y Diseño Orientado a Objetos/Prácticas/napakalaki/src/GUI/kitty_2.png")); // NOI18N
-
-        winnie.setIcon(new javax.swing.ImageIcon("/Users/jesusjimsa/Dropbox (Personal)/Documentos/Universidad/2 - Primer cuatrimestre/Programación y Diseño Orientado a Objetos/Prácticas/napakalaki/src/GUI/7843.png")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
