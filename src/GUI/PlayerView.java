@@ -104,7 +104,7 @@ public class PlayerView extends javax.swing.JPanel {
         playerName = new javax.swing.JLabel();
         levelNumber = new javax.swing.JLabel();
         descartarT = new javax.swing.JButton();
-        hacerVisible = new javax.swing.JButton();
+        hacerVisibleButton = new javax.swing.JButton();
         hiddenTreasures = new javax.swing.JPanel();
         visibleTreasures = new javax.swing.JPanel();
         cultistView2 = new GUI.CultistView();
@@ -170,11 +170,11 @@ public class PlayerView extends javax.swing.JPanel {
             }
         });
 
-        hacerVisible.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        hacerVisible.setText("Hacer visible");
-        hacerVisible.addActionListener(new java.awt.event.ActionListener() {
+        hacerVisibleButton.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        hacerVisibleButton.setText("Hacer visible");
+        hacerVisibleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hacerVisibleActionPerformed(evt);
+                hacerVisibleButtonActionPerformed(evt);
             }
         });
 
@@ -229,7 +229,7 @@ public class PlayerView extends javax.swing.JPanel {
                                     .addComponent(descartarT))
                                 .addGap(32, 32, 32)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(hacerVisible, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                                    .addComponent(hacerVisibleButton, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                                     .addComponent(hiddenTreasures, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(77, 77, 77)
@@ -255,7 +255,7 @@ public class PlayerView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(descartarT, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hacerVisible, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(hacerVisibleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(robarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
@@ -274,7 +274,7 @@ public class PlayerView extends javax.swing.JPanel {
 		repaint();
     }//GEN-LAST:event_descartarTActionPerformed
 
-    private void hacerVisibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hacerVisibleActionPerformed
+    private void hacerVisibleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hacerVisibleButtonActionPerformed
         ArrayList<Treasure> selHidden = getSelectedTreasures(hiddenTreasures);
 		
         napakalakiModel.makeTreasuresVisible(selHidden);
@@ -284,14 +284,14 @@ public class PlayerView extends javax.swing.JPanel {
 		repaint();
 		
         napakalakiView.checkPendingBadConsequence();
-    }//GEN-LAST:event_hacerVisibleActionPerformed
+    }//GEN-LAST:event_hacerVisibleButtonActionPerformed
 
     private void robarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_robarButtonActionPerformed
         Treasure robado = playerModel.stealTreasure();
 
 		setPlayer(napakalakiModel.getCurrentPlayer());
 		robarButton.setEnabled(false);
-		hacerVisible.setEnabled(true);
+		hacerVisibleButton.setEnabled(true);
     }//GEN-LAST:event_robarButtonActionPerformed
 
 	ArrayList<Treasure> selectedTreasures(JPanel panel){
@@ -308,11 +308,20 @@ public class PlayerView extends javax.swing.JPanel {
 
 		return elegidos;
 	}
+	
+	public void ChangeMakeVisibleButton (boolean value){
+		if (value){
+			if (playerModel.getHiddenTreasures().size() > 0)
+				hacerVisibleButton.setEnabled(true);
+		}
+		else
+			hacerVisibleButton.setEnabled(false);
+	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.CultistView cultistView2;
     private javax.swing.JButton descartarT;
-    private javax.swing.JButton hacerVisible;
+    private javax.swing.JButton hacerVisibleButton;
     private javax.swing.JPanel hiddenTreasures;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;

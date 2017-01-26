@@ -112,7 +112,7 @@
                               </Group>
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="hacerVisible" pref="158" max="32767" attributes="0"/>
+                                  <Component id="hacerVisibleButton" pref="158" max="32767" attributes="0"/>
                                   <Component id="hiddenTreasures" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -148,7 +148,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="descartarT" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="hacerVisible" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="hacerVisibleButton" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="robarButton" min="-2" pref="39" max="-2" attributes="0"/>
@@ -185,7 +185,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="descartarTActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="hacerVisible">
+    <Component class="javax.swing.JButton" name="hacerVisibleButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Comic Sans MS" size="14" style="0"/>
@@ -193,7 +193,7 @@
         <Property name="text" type="java.lang.String" value="Hacer visible"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hacerVisibleActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hacerVisibleButtonActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="hiddenTreasures">
