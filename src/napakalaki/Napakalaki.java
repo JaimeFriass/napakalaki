@@ -11,10 +11,9 @@ public class Napakalaki {
 	private final ArrayList<Player> players = new ArrayList();
 	private static final CardDealer CD = CardDealer.getInstance();
 	private Boolean primera_jugada = true;
-	
 
 	public Napakalaki() {
-		
+
 	}
 
 	private void initPlayers(ArrayList<String> names) {
@@ -26,26 +25,25 @@ public class Napakalaki {
 	private Player nextPlayer() {
 		Random rn = new Random();
 		int result = 0;
-		
+
 		if (primera_jugada) {
 			primera_jugada = false;
 			result = rn.nextInt(players.size() - 1);
-		}
-		else{
-			for(int i = 0; i < players.size(); i++){
-				if(currentPlayer == players.get(i)){
-					if(i != players.size()){
+		} else {
+			for (int i = 0; i < players.size(); i++) {
+				if (currentPlayer == players.get(i)) {
+					if (i != players.size()) {
 						result = i + 1;
-					}
-					else{
+					} else {
 						result = 0;
 					}
 				}
 			}
 		}
-		if (result >= players.size())
-		    result -= 1;
-		
+		if (result >= players.size()) {
+			result -= 1;
+		}
+
 		return players.get(result);
 	}
 
@@ -63,46 +61,60 @@ public class Napakalaki {
 
 		for (int i = 0; i < players.size(); i++) {
 			result = rn.nextInt(players.size());
-			if (result != i) {
-				players.get(i).setEnemy(players.get(result));
-			} else {
-				i--;
+
+			while (i == result) {
+				result = rn.nextInt(players.size());
 			}
+
+			players.get(i).setEnemy(players.get(result));
 		}
 	}
 
 	public static Napakalaki getInstance() {
-		return instance;	
+		return instance;
 	}
-	
+
 	public CombatResult developCombat() {
-		CombatResult combatResult;
-		combatResult = currentPlayer.combat(currentMonster);
+		CombatResult combatResult = currentPlayer.combat(currentMonster);
+
 		CD.giveMonsterBack(currentMonster);
-		
-		if(combatResult == CombatResult.LOSEANDCONVERT){
+
+		if (combatResult == CombatResult.LOSEANDCONVERT) {
 			CardDealer dealer = CardDealer.getInstance();
 			Cultist sectario = dealer.nextCultist();
-			
+
 			CultistPlayer jugador_sect = new CultistPlayer(currentPlayer, sectario);
-			
+
 			int actual = players.indexOf(currentPlayer);
-			
+
 			currentPlayer = jugador_sect;
 			players.set(actual, jugador_sect);
-		}
-		
-		return combatResult;
 
+			for (Player a_player : players) {
+				if (a_player != jugador_sect) {
+					if (a_player.getEnemy() == currentPlayer) {
+						a_player.setEnemy(jugador_sect);
+					}
+				}
+			}
+
+			currentPlayer = jugador_sect;
+		}
+
+		CD.giveMonsterBack(currentMonster);
+
+		return combatResult;
 	}
+
 	public void discardVisibleTreasures(ArrayList<Treasure> treasures) {
 		Treasure treasure;
-		for (int i = 0; i < treasures.size() ; i++) {
+		for (int i = 0; i < treasures.size(); i++) {
 			treasure = treasures.get(i);
 			currentPlayer.discardVisibleTreasure(treasure);
 			CD.giveTreasureBack(treasure);
 		}
 	}
+
 	public void discardHiddenTreasures(ArrayList<Treasure> treasures) {
 		Treasure treasure;
 		for (int i = 0; i < treasures.size(); i++) {
@@ -117,15 +129,14 @@ public class Napakalaki {
 			currentPlayer.makeTreasureVisible(treasure);
 		}
 	}
-	
+
 	public void initGame(ArrayList<String> players) {
 		initPlayers(players);
 		setEnemies();
-		CD.initTreasureCardDeck();
-		CD.initMonsterCardDeck();
+		CD.initCards();
 		nextTurn();
 	}
-	
+
 	public Player getCurrentPlayer() {
 		return currentPlayer;
 	}
@@ -134,19 +145,25 @@ public class Napakalaki {
 		return currentMonster;
 	}
 
-   	public boolean nextTurn() {
+	public boolean nextTurn() {
 		boolean stateOK = nextTurnAllowed();
+
 		if (stateOK) {
 			currentMonster = CD.nextMonster();
 			currentPlayer = nextPlayer();
-			if ( currentPlayer.isDead()) {
+
+			if (currentPlayer.isDead()) {
 				currentPlayer.initTreasures();
 			}
 		}
-		
+		else {
+			this.currentMonster = this.CD.nextMonster(); //1.2
+		}
+
 		return stateOK;
-			
-    	}
+
+	}
+
 	public boolean endOfGame(CombatResult result) {
 		return (CombatResult.WINGAME == result);
 	}

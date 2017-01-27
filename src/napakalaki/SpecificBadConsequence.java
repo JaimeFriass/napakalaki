@@ -3,9 +3,9 @@ package Napakalaki;
 import java.util.ArrayList;
 
 public class SpecificBadConsequence extends BadConsequence {
-    
-    private ArrayList<TreasureKind> specificVisibleTreasures = new ArrayList();
-    private ArrayList<TreasureKind> specificHiddenTreasures = new ArrayList();
+
+	private ArrayList<TreasureKind> specificVisibleTreasures = new ArrayList();
+	private ArrayList<TreasureKind> specificHiddenTreasures = new ArrayList();
 
 	public SpecificBadConsequence(String name, int lvls, ArrayList<TreasureKind> specificVisible, ArrayList<TreasureKind> specificHidden) {
 		super(name, lvls, false);
@@ -16,25 +16,50 @@ public class SpecificBadConsequence extends BadConsequence {
 	}
 
 	@Override
-	public SpecificBadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h) {
-		ArrayList<TreasureKind> visible_adjust = specificVisibleTreasures;
-		ArrayList<TreasureKind> hidden_adjust = specificHiddenTreasures;
+	public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h) {
+		BadConsequence speBadCon;
 		
-		SpecificBadConsequence devuelve = new SpecificBadConsequence(text, levels, new ArrayList(), new ArrayList()  );
+		// FOR VISIBLE TREASURES
+		ArrayList<Treasure> copiaV = new ArrayList(v);
+		ArrayList<TreasureKind> newSpecificVisible = new ArrayList();
+
+		for (TreasureKind tk : specificVisibleTreasures){
+			int i = 0;
+			boolean found = false;
+
+			while ((i < copiaV.size()) && !(found)){
+				if (copiaV.get(i).getType() == tk){
+					found = true;
+					newSpecificVisible.add(tk);
+					copiaV.remove(i);
+				}
+
+				i++;
+			}
+		}
+
+		// FOR HIDDEN TREASURES
+		ArrayList<Treasure> copiaH = new ArrayList(h);
+		ArrayList<TreasureKind> newSpecificHidden = new ArrayList();
+
+		for (TreasureKind tk : specificHiddenTreasures){
+			int i = 0;
+			boolean found = false;
+
+			while ((i < copiaH.size()) && !(found)){
+				if (copiaH.get(i).getType() == tk){
+					found = true;
+					newSpecificHidden.add(tk);
+					copiaH.remove(i);
+				}
+
+				i++;
+			}
+		}
+
+		speBadCon = new SpecificBadConsequence(this.text, this.levels, newSpecificVisible,newSpecificHidden);
 		
-		for (int i = 0; i < v.size(); i++) {
-		    if ( visible_adjust.contains(v.get(i).getType() ) ) {
-			devuelve.specificVisibleTreasures.add(v.get(i).getType());
-			visible_adjust.remove(v.get(i).getType() );
-		    }
-		}
-		for (int i = 0; i < h.size(); i++) {
-		    if ( hidden_adjust.contains (h.get(i).getType() ) ) {
-			devuelve.specificHiddenTreasures.add(h.get(i).getType());
-			hidden_adjust.remove(h.get(i).getType() );
-		    }
-		}
-		return devuelve;
+		return speBadCon;
 	}
 
 	public ArrayList<TreasureKind> getSpecificHiddenTreasures() {
@@ -58,15 +83,15 @@ public class SpecificBadConsequence extends BadConsequence {
 			specificHiddenTreasures.remove(t.getType());
 		}
 	}
-	
+
 	@Override
 	public boolean isEmpty() {
-	    return specificVisibleTreasures.isEmpty() && specificHiddenTreasures.isEmpty();
+		return specificVisibleTreasures.isEmpty() && specificHiddenTreasures.isEmpty();
 	}
 
 	@Override
 	public String toString() {
-                String devolver = "";
+		String devolver = "";
 		if (levels != 0) {
 			devolver += "Pérdida de niveles: " + levels + "\n";
 		}

@@ -19,126 +19,125 @@ public class PlayerView extends javax.swing.JPanel {
 	private Player playerModel;
 	private Napakalaki napakalakiModel;
 	private NapakalakiView napakalakiView;
-	
+
 	/**
 	 * Creates new form PlayerView
 	 */
 	public PlayerView() {
 		initComponents();
 	}
-	
-	public void setNapakalaki(Napakalaki model, NapakalakiView view){
+
+	public void setNapakalaki(Napakalaki model, NapakalakiView view) {
 		napakalakiModel = model;
 		napakalakiView = view;
 	}
-        
-	
-	
-	
+
 	public void setPlayer(Player model) {
 		playerModel = model;
-		
+
 		String name = playerModel.getName();
 		String level = Integer.toString(playerModel.getLevels());
-                String combatLevel = Integer.toString(playerModel.getCombatLevel());
-                String stealText;
-                boolean canSteal = playerModel.canISteal();
-		
+		String combatLevel = Integer.toString(playerModel.getCombatLevel());
+		String stealText;
+		boolean canSteal = playerModel.canISteal();
+
 		playerName.setText(name);
 		levelNumber.setText(level);
-                combatLevelNumber.setText(combatLevel);
-                
-                // Si puede robar
-                if ( canSteal ) {
-                    stealText = "Puedes robar a " + playerModel.getEnemy();
-                } else {
-                    stealText = "No puedes robar";
-                }
-                stealTextDisplay.setText(stealText);
-                
-                // Si el jugador es cultista
-                if (playerModel instanceof CultistPlayer)
-                    playerType.setText("CULTISTA");
-                else
-                    playerType.setText("NORMAL");
-                
+		combatLevelNumber.setText(combatLevel);
+
+		// Si puede robar
+		if (canSteal) {
+			stealText = "Puedes robar a " + playerModel.getEnemy();
+		} else {
+			stealText = "No puedes robar";
+		}
+		stealTextDisplay.setText(stealText);
+
+		// Si el jugador es cultista
+		if (playerModel instanceof CultistPlayer) {
+			playerType.setText("CULTISTA");
+		} else {
+			playerType.setText("NORMAL");
+		}
+
 		// Se rellenan los paneles
 		this.fillTreasurePanel(visibleTreasures, playerModel.getVisibleTreasures());
 		this.fillTreasurePanel(hiddenTreasures, playerModel.getHiddenTreasures());
-                
-                // Se activan inicialmente todos los botones
-                discardButton.setEnabled(true);
-                discardAllButton.setEnabled(true);
-                makeVisibleButton.setEnabled(true);
-                stealButton.setEnabled(true);
-                
-                // Si no hay tesoros escondidos
-                if (playerModel.getHiddenTreasures().isEmpty()) {
-                    makeVisibleButton.setEnabled(false);
-                    if (playerModel.getVisibleTreasures().isEmpty()) {
-                        discardButton.setEnabled(false);
-                        discardAllButton.setEnabled(false);
-                    }
-                }
-		
+
+		// Se activan inicialmente todos los botones
+		discardButton.setEnabled(true);
+		discardAllButton.setEnabled(true);
+		makeVisibleButton.setEnabled(true);
+		stealButton.setEnabled(true);
+
+		// Si no hay tesoros escondidos
+		if (playerModel.getHiddenTreasures().isEmpty()) {
+			makeVisibleButton.setEnabled(false);
+			if (playerModel.getVisibleTreasures().isEmpty()) {
+				discardButton.setEnabled(false);
+				discardAllButton.setEnabled(false);
+			}
+		}
+
 		// cultistView.setCultist(model);
-		
 		repaint();
-		
+
 		revalidate();
 	}
-        
-        public void alterStealButton (boolean d) {
-            if (d) {
-                if (playerModel.canISteal() )
-                    stealButton.setEnabled(true);
-            } else {
-                stealButton.setEnabled(false);
-            }
-        }
-        
-        public void alterMakeVisibleButton (boolean d) {
-            if (d) {
-                if (playerModel.getHiddenTreasures().size() > 0)
-                    makeVisibleButton.setEnabled(true);
-            } else 
-                makeVisibleButton.setEnabled(true);
-        }
-	
-	private void fillTreasurePanel (JPanel aPanel, ArrayList<Treasure> aList) {
+
+	public void alterStealButton(boolean d) {
+		if (d) {
+			if (playerModel.canISteal()) {
+				stealButton.setEnabled(true);
+			}
+		} else {
+			stealButton.setEnabled(false);
+		}
+	}
+
+	public void alterMakeVisibleButton(boolean d) {
+		if (d) {
+			if (playerModel.getHiddenTreasures().size() > 0) {
+				makeVisibleButton.setEnabled(true);
+			}
+		} else {
+			makeVisibleButton.setEnabled(true);
+		}
+	}
+
+	private void fillTreasurePanel(JPanel aPanel, ArrayList<Treasure> aList) {
 		// Se elimina la información antigua
 		aPanel.removeAll();
-		
+
 		// Se recorre la lista de tesoros construyendo y añadiendo sus vistas al panel
-		for (Treasure t : aList ) {
+		for (int i = 0; i < aList.size(); i++) {
 			TreasureView aTreasureView = new TreasureView();
-			aTreasureView.setTreasure(t);
+			aTreasureView.setTreasure(aList.get(i));
 			aTreasureView.setVisible(true);
-			
+
 			aPanel.add(aTreasureView);
 		}
-		
+
 		// Se fuerza la actualización visual del panel
 		aPanel.repaint();
 		aPanel.revalidate();
 	}
-        
-        public ArrayList<Treasure> getSelectedTreasures(JPanel aPanel) {
-            // Se recorren los tesoros que contiene el panel,
-            //    almacenando en un vector aquellos que están seleccionados.
-            //    Finalmente se devuelve dicho vector.
-            TreasureView tv;
-            ArrayList<Treasure> output = new ArrayList();
-            for (Component c : aPanel.getComponents()) {
 
+	public ArrayList<Treasure> getSelectedTreasures(JPanel aPanel) {
+		// Se recorren los tesoros que contiene el panel,
+		//    almacenando en un vector aquellos que están seleccionados.
+		//    Finalmente se devuelve dicho vector.
+		TreasureView tv;
+		ArrayList<Treasure> output = new ArrayList();
+		for (Component c : aPanel.getComponents()) {
 
-                tv = (TreasureView) c;
-                if (tv.isSelected()) {
-                    output.add(tv.getTreasure());
-                }
-            }
-            return output;
-        }	
+			tv = (TreasureView) c;
+			if (tv.isSelected()) {
+				output.add(tv.getTreasure());
+			}
+		}
+		return output;
+	}
 
 	/**
 	 * This method is called from within the constructor to initialize the form. WARNING: Do NOT modify this code. The content of this method is always regenerated by the Form Editor.
@@ -365,30 +364,8 @@ public class PlayerView extends javax.swing.JPanel {
         visibleTreasures.setBackground(new java.awt.Color(204, 255, 204));
         visibleTreasures.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Tesoros visibles"));
 
-        javax.swing.GroupLayout visibleTreasuresLayout = new javax.swing.GroupLayout(visibleTreasures);
-        visibleTreasures.setLayout(visibleTreasuresLayout);
-        visibleTreasuresLayout.setHorizontalGroup(
-            visibleTreasuresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        visibleTreasuresLayout.setVerticalGroup(
-            visibleTreasuresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 123, Short.MAX_VALUE)
-        );
-
         hiddenTreasures.setBackground(new java.awt.Color(204, 255, 204));
         hiddenTreasures.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Tesoros ocultos"));
-
-        javax.swing.GroupLayout hiddenTreasuresLayout = new javax.swing.GroupLayout(hiddenTreasures);
-        hiddenTreasures.setLayout(hiddenTreasuresLayout);
-        hiddenTreasuresLayout.setHorizontalGroup(
-            hiddenTreasuresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        hiddenTreasuresLayout.setVerticalGroup(
-            hiddenTreasuresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 121, Short.MAX_VALUE)
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -441,10 +418,10 @@ public class PlayerView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(visibleTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(hiddenTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(visibleTreasures, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(hiddenTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(discardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(makeVisibleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -452,73 +429,78 @@ public class PlayerView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(stealButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(discardAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void discardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardButtonActionPerformed
-        ArrayList<Treasure> visibles = getSelectedTreasures(visibleTreasures);
-        ArrayList<Treasure> escondidos = getSelectedTreasures(hiddenTreasures);
-        
-        // Se descarta un tesoro
-        for (Object tesoro : visibles)
-            playerModel.discardVisibleTreasure( (Treasure) tesoro);
-        for (Object tesoro : escondidos)
-            playerModel.discardHiddenTreasure( (Treasure) tesoro);
-        
-        setPlayer(napakalakiModel.getCurrentPlayer());
-        
-        // Si no hay tesoros que descartar se desactivan los botones de descarte
-        if ( (playerModel.getHiddenTreasures().isEmpty()) && playerModel.getVisibleTreasures().isEmpty()) {
-            discardButton.setEnabled(false);
-            discardAllButton.setEnabled(false);
-        }
-     
-	repaint();
+		ArrayList<Treasure> visibles = getSelectedTreasures(visibleTreasures);
+		ArrayList<Treasure> escondidos = getSelectedTreasures(hiddenTreasures);
+
+		// Se descarta un tesoro
+		for (Object tesoro : visibles) {
+			playerModel.discardVisibleTreasure((Treasure) tesoro);
+		}
+		for (Object tesoro : escondidos) {
+			playerModel.discardHiddenTreasure((Treasure) tesoro);
+		}
+
+		setPlayer(napakalakiModel.getCurrentPlayer());
+
+		// Si no hay tesoros que descartar se desactivan los botones de descarte
+		if ((playerModel.getHiddenTreasures().isEmpty()) && playerModel.getVisibleTreasures().isEmpty()) {
+			discardButton.setEnabled(false);
+			discardAllButton.setEnabled(false);
+		}
+
+		repaint();
     }//GEN-LAST:event_discardButtonActionPerformed
 
     private void makeVisibleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeVisibleButtonActionPerformed
-        ArrayList<Treasure> selHidden = getSelectedTreasures(hiddenTreasures);
-        napakalakiModel.makeTreasuresVisible(selHidden);
-        setPlayer(napakalakiModel.getCurrentPlayer());
-        
-        // Si no hay tesoros escondidos se oculta el botón
-        if (playerModel.getHiddenTreasures().isEmpty())
-            makeVisibleButton.setEnabled(false);
-        
-        napakalakiView.checkPendingBadConsequence();
+		ArrayList<Treasure> selHidden = getSelectedTreasures(hiddenTreasures);
+		napakalakiModel.makeTreasuresVisible(selHidden);
+		setPlayer(napakalakiModel.getCurrentPlayer());
+
+		// Si no hay tesoros escondidos se oculta el botón
+		if (playerModel.getHiddenTreasures().isEmpty()) {
+			makeVisibleButton.setEnabled(false);
+		}
+
+		napakalakiView.checkPendingBadConsequence();
     }//GEN-LAST:event_makeVisibleButtonActionPerformed
 
     private void stealButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stealButtonActionPerformed
-        Treasure robado = playerModel.stealTreasure();
-        DialogView dialog = new DialogView(null, false);
-        
-        // Se crea un diálogo emergente para indicar lo robado
-        if (robado == null)
-            dialog.setDialog("No hay tesoros para robar");
-        else {
-            setPlayer(napakalakiModel.getCurrentPlayer());
-            stealButton.setEnabled(false);
-            makeVisibleButton.setEnabled(true);
-            dialog.setDialog("Has robado " + robado.getName());
-        }
-        dialog.setVisible(true);
+		Treasure robado = playerModel.stealTreasure();
+		DialogView dialog = new DialogView(null, false);
+
+		// Se crea un diálogo emergente para indicar lo robado
+		if (robado == null) {
+			dialog.setDialog("No hay tesoros para robar");
+		}
+		else {
+			setPlayer(napakalakiModel.getCurrentPlayer());
+			stealButton.setEnabled(false);
+			makeVisibleButton.setEnabled(true);
+			dialog.setDialog("Has robado " + robado.getName());
+		}
+		
+		dialog.setVisible(true);
     }//GEN-LAST:event_stealButtonActionPerformed
 
     private void discardAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardAllButtonActionPerformed
-        playerModel.discardAllTreasures();
-        setPlayer(napakalakiModel.getCurrentPlayer());
-        
-        // Se desactivan los correspondientes botones
-        discardButton.setEnabled(false);
-        discardAllButton.setEnabled(false);
-        makeVisibleButton.setEnabled(false);
+		playerModel.discardAllTreasures();
+		setPlayer(napakalakiModel.getCurrentPlayer());
+
+		// Se desactivan los correspondientes botones
+		discardButton.setEnabled(false);
+		discardAllButton.setEnabled(false);
+		makeVisibleButton.setEnabled(false);
     }//GEN-LAST:event_discardAllButtonActionPerformed
 
-	ArrayList<Treasure> selectedTreasures(JPanel panel){
+	ArrayList<Treasure> selectedTreasures(JPanel panel) {
 		ArrayList<Treasure> elegidos = new ArrayList();
 		TreasureView tv;
-		
+
 		for (Component c : panel.getComponents()) {
 			tv = (TreasureView) c;
 
@@ -529,14 +511,15 @@ public class PlayerView extends javax.swing.JPanel {
 
 		return elegidos;
 	}
-	
-	public void ChangeMakeVisibleButton (boolean value){
-		if (value){
-			if (playerModel.getHiddenTreasures().size() > 0)
+
+	public void ChangeMakeVisibleButton(boolean value) {
+		if (value) {
+			if (playerModel.getHiddenTreasures().size() > 0) {
 				makeVisibleButton.setEnabled(true);
-		}
-		else
+			}
+		} else {
 			makeVisibleButton.setEnabled(false);
+		}
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
