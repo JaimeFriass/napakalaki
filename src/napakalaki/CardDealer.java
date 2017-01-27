@@ -169,13 +169,13 @@ public class CardDealer {
 		unusedMonsters.add(new Monster("Tongue", 19, badConsequence, prize));
 		unusedMonsters.get(17).setIcon(18);	//Icono para la interfaz
 
-		badConsequence = new NumericBadConsequence("Te faltan manos para tanta cabeza. Pierdes 3 niveles y tus tesoros visibles de las manos", 3,
-				Integer.MAX_VALUE,
-				Integer.MAX_VALUE);
+		badConsequence = new SpecificBadConsequence("Te faltan manos para tanta cabeza. Pierdes 3 niveles y tus tesoros visibles de las manos", 3,
+				new ArrayList(Arrays.asList(TreasureKind.ONEHAND, TreasureKind.ONEHAND, TreasureKind.BOTHHANDS)),
+				new ArrayList());
 		prize = new Prize(2, 1);
 		unusedMonsters.add(new Monster("Bicéfalo", 21, badConsequence, prize));
 		unusedMonsters.get(18).setIcon(19);	//Icono para la interfaz
-		
+
 		//Monstruos de los cultist
 		badConsequence = new SpecificBadConsequence("Pierdes 1 mano visible", 0,
 				new ArrayList(Arrays.asList(TreasureKind.ONEHAND)),
@@ -183,41 +183,41 @@ public class CardDealer {
 		prize = new Prize(3, 1);
 		unusedMonsters.add(new Monster("El mal indecible impronunciable", 10, badConsequence, prize));
 		unusedMonsters.get(19).setIcon(20);	//Icono para la interfaz
-		
-		badConsequence = new NumericBadConsequence("Pierdes tus tesoros visibles. Jajaja", 0, Integer.MAX_VALUE, 0);
+
+		badConsequence = new NumericBadConsequence("Pierdes tus tesoros visibles. Jajaja", 0, 10, 0);
 		prize = new Prize(2, 1);
 		unusedMonsters.add(new Monster("Testigos oculares", 6, badConsequence, prize));
 		unusedMonsters.get(20).setIcon(21);	//Icono para la interfaz
-		
+
 		badConsequence = new DeathBadConsequence("Hoy no es tu día de suerte. Mueres");
 		prize = new Prize(2, 5);
 		unusedMonsters.add(new Monster("El gran Cthulhu", 20, badConsequence, prize));
 		unusedMonsters.get(21).setIcon(22);	//Icono para la interfaz
-		
+
 		badConsequence = new NumericBadConsequence("Tu gobierno te recorta 2 niveles", 2, 0, 0);
 		prize = new Prize(2, 1);
 		unusedMonsters.add(new Monster("Serpiente Politico", 8, badConsequence, prize));
 		unusedMonsters.get(22).setIcon(23);	//Icono para la interfaz
-		
-		badConsequence = new SpecificBadConsequence("Pierdes tu casco y tu armadura visible. Pierdes tus manos ocultas", 0, 
+
+		badConsequence = new SpecificBadConsequence("Pierdes tu casco y tu armadura visible. Pierdes tus manos ocultas", 0,
 				new ArrayList(Arrays.asList(TreasureKind.HELMET, TreasureKind.ARMOR)),
 				new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS)));
 		prize = new Prize(1, 1);
 		unusedMonsters.add(new Monster("Felpuggoth", 2, badConsequence, prize));
 		unusedMonsters.get(23).setIcon(24);	//Icono para la interfaz
-		
+
 		badConsequence = new NumericBadConsequence("Pierdes 2 niveles", 2, 0, 0);
 		prize = new Prize(4, 2);
 		unusedMonsters.add(new Monster("Shoggoth", 16, badConsequence, prize));
 		unusedMonsters.get(24).setIcon(25);	//Icono para la interfaz
-		
+
 		badConsequence = new NumericBadConsequence("Pintalabios negro. Pierdes 2 niveles", 2, 0, 0);
 		prize = new Prize(1, 1);
 		unusedMonsters.add(new Monster("Lolitagooth", 2, badConsequence, prize));
 		unusedMonsters.get(25).setIcon(26);	//Icono para la interfaz
 	}
-	
-	private void initCultistCardDeck(){
+
+	private void initCultistCardDeck() {
 		unusedCultist.add(new Cultist("Sectario 1", 1));
 		unusedCultist.add(new Cultist("Sectario 2", 2));
 		unusedCultist.add(new Cultist("Sectario 3", 1));
@@ -235,64 +235,58 @@ public class CardDealer {
 	private void shuffleMonsters() {
 		Collections.shuffle(unusedMonsters);
 	}
-	
-	private void shuffleCultist(){
+
+	private void shuffleCultist() {
 		Collections.shuffle(unusedCultist);
 	}
 
 	public Treasure nextTreasure() {
-		Treasure siguiente;
-		
-		shuffleTreasures();
-		
-		if(unusedTreasures.isEmpty() ){
-		    unusedTreasures = usedTreasures;
-		    shuffleTreasures();
-		    
-		    siguiente = unusedTreasures.get(unusedTreasures.size() - 1);
-		}
-		else{
-		    siguiente = unusedTreasures.get(unusedTreasures.size() - 1);
-		    unusedTreasures.remove(unusedTreasures.size() - 1);
+		if(unusedTreasures.isEmpty()){
+			unusedTreasures = usedTreasures;
+			usedTreasures = new ArrayList();
+			shuffleTreasures();
 		}
 		
-		return siguiente;
+		Treasure trs = unusedTreasures.get(0);
+		unusedTreasures.remove(trs);
+		usedTreasures.add(trs);
+		
+		return trs; 
 	}
 
 	public Monster nextMonster() {
 		Monster siguiente;
-		
+
 		shuffleMonsters();
-		
-		if(!unusedMonsters.isEmpty()){
+
+		if (!unusedMonsters.isEmpty()) {
 			siguiente = unusedMonsters.get(unusedMonsters.size() - 1);
 			unusedMonsters.remove(unusedMonsters.size() - 1);
-		}
-		else{
+		} else {
 			unusedMonsters = usedMonsters;
 			shuffleMonsters();
-			
+
 			siguiente = unusedMonsters.get(unusedMonsters.size() - 1);
 		}
-		
+
 		return siguiente;
 	}
 
-	public Cultist nextCultist(){
+	public Cultist nextCultist() {
 		Cultist siguiente;
-		
-		if(unusedCultist.isEmpty()){
+
+		if (unusedCultist.isEmpty()) {
 			initCultistCardDeck();
 			shuffleCultist();
 		}
-		
+
 		siguiente = unusedCultist.get(0);
-		
+
 		unusedCultist.remove(siguiente);
-		
+
 		return siguiente;
 	}
-	
+
 	public void giveTreasureBack(Treasure t) {
 		usedTreasures.add(t);
 	}
@@ -300,15 +294,15 @@ public class CardDealer {
 	public void giveMonsterBack(Monster m) {
 		usedMonsters.add(m);
 	}
-	
-    public void initCards() {
-        initMonsterCardDeck();
+
+	public void initCards() {
+		initMonsterCardDeck();
 		shuffleMonsters();
-		
+
 		initTreasureCardDeck();
 		shuffleTreasures();
-		
+
 		initCultistCardDeck();
 		shuffleCultist();
-    }
+	}
 }

@@ -12,39 +12,39 @@ import Napakalaki.*;
  * @author jesusjimsa
  */
 public class NapakalakiView extends javax.swing.JFrame {
-	
-	private Napakalaki napakalakiModel = new Napakalaki();
-        private Player currentPlayer;
-        private Monster currentMonster;
-	
-	public void setNapakalaki(Napakalaki napakalaki){
-            
-		napakalakiModel = napakalaki;
-                
-                currentPlayer = napakalaki.getCurrentPlayer();
-                playerView.setPlayer(currentPlayer);
-                
-                currentMonster = napakalaki.getCurrentMonster();
-                monsterView.setMonster(currentMonster);
-                
-                playerView.setNapakalaki(napakalaki, this);
 
-                // Se desactivan los botones al inicio
-                nextTurnButton.setEnabled(false);
-                combatButton.setEnabled(false);
-                nextTurnButton.setEnabled(false);
-                playerView.alterStealButton(false);
-                
-                repaint();
+	private Napakalaki napakalakiModel = new Napakalaki();
+	private Player currentPlayer;
+	private Monster currentMonster;
+
+	public void setNapakalaki(Napakalaki napakalaki) {
+
+		napakalakiModel = napakalaki;
+
+		currentPlayer = napakalaki.getCurrentPlayer();
+		playerView.setPlayer(currentPlayer);
+
+		currentMonster = napakalaki.getCurrentMonster();
+		monsterView.setMonster(currentMonster);
+
+		playerView.setNapakalaki(napakalaki, this);
+
+		// Se desactivan los botones al inicio
+		nextTurnButton.setEnabled(false);
+		combatButton.setEnabled(false);
+		nextTurnButton.setEnabled(false);
+		playerView.alterStealButton(false);
+
+		repaint();
 	}
-	
+
 	/**
 	 * Creates new form NapakalakiView
 	 */
 	public NapakalakiView() {
-                this.setTitle("NAPAKALAKI");
+		this.setTitle("NAPAKALAKI");
 		initComponents();
-                setLocationRelativeTo(null);    // Ventana centrada
+		setLocationRelativeTo(null);    // Ventana centrada
 	}
 
 	/**
@@ -142,16 +142,16 @@ public class NapakalakiView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-	public void checkPendingBadConsequence(){
-		if(!combatButton.isEnabled() && napakalakiModel.nextTurnAllowed()){
+	public void checkPendingBadConsequence() {
+		if (!combatButton.isEnabled() && napakalakiModel.nextTurnAllowed()) {
 			nextTurnButton.setEnabled(true);
 		}
 	}
-	
+
 	public void showView() {
 		this.setVisible(true);
 	}
-	
+
     private void meetMonsterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetMonsterButtonActionPerformed
 		monsterView.showMonster();
 		combatButton.setEnabled(true);
@@ -160,45 +160,46 @@ public class NapakalakiView extends javax.swing.JFrame {
     }//GEN-LAST:event_meetMonsterButtonActionPerformed
 
     private void nextTurnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTurnButtonActionPerformed
-        if(napakalakiModel.nextTurn()){
-		playerView.setPlayer(napakalakiModel.getCurrentPlayer());
-		monsterView.setMonster(napakalakiModel.getCurrentMonster());
-		meetMonsterButton.setEnabled(true);
-		nextTurnButton.setEnabled(false);
-                playerView.alterStealButton(false);
-        } else {
-            DialogView dialog = new DialogView (this, false);
-            dialog.setDialog("No puedes pasar al siguiente turno. Tienes que descartar"
-                    + "más de 4 tesoros o cumplir un mal rollo. ");
-            dialog.setVisible(true);
-        }
+		if (napakalakiModel.nextTurn()) {
+			playerView.setPlayer(napakalakiModel.getCurrentPlayer());
+			monsterView.setMonster(napakalakiModel.getCurrentMonster());
+			meetMonsterButton.setEnabled(true);
+			nextTurnButton.setEnabled(false);
+			playerView.alterStealButton(false);
+		}
+		else {
+			DialogView dialog = new DialogView(this, false);
+			dialog.setDialog("Cumple el mal rollo antes de continuar");
+			dialog.setVisible(true);
+		}
     }//GEN-LAST:event_nextTurnButtonActionPerformed
 
     private void combatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combatButtonActionPerformed
 		CombatResult combatResult = napakalakiModel.developCombat();
-                DialogView dialog = new DialogView(this, true);
-                
-                switch (combatResult) {
-                    case WIN:
-                        dialog.setDialog("Has ganado el combate! :D");
-                        break;
-                    case LOSE:
-                        dialog.setDialog("Has perdido el combate T.T");
-                        break;
-                    case LOSEANDCONVERT:
-                        dialog.setDialog("Pierdes el combate y te conviertes en sectario :(");
-                        break;
-                    case WINGAME:
-                        dialog.setDialog("Has ganado el juego.\nBIEEEEEN!!");
-                        dialog.setVisible(true);
-                        System.exit(0);
-                        break;
-                    }
-                dialog.setVisible(true);
-                playerView.setPlayer(napakalakiModel.getCurrentPlayer());
-                combatButton.setEnabled(false);
-                playerView.alterStealButton(true);
-                nextTurnButton.setEnabled(true);
+		DialogView dialog = new DialogView(this, true);
+
+		switch (combatResult) {
+			case WIN:
+				dialog.setDialog("Has ganado el combate! :D");
+				break;
+			case LOSE:
+				dialog.setDialog("Has perdido el combate T.T");
+				break;
+			case LOSEANDCONVERT:
+				dialog.setDialog("Pierdes el combate y te conviertes en sectario :(");
+				break;
+			case WINGAME:
+				dialog.setDialog("Has ganado el juego.\nBIEEEEEN!!");
+				dialog.setVisible(true);
+				System.exit(0);
+				break;
+		}
+		
+		dialog.setVisible(true);
+		playerView.setPlayer(napakalakiModel.getCurrentPlayer());
+		combatButton.setEnabled(false);
+		playerView.alterStealButton(true);
+		nextTurnButton.setEnabled(true);
     }//GEN-LAST:event_combatButtonActionPerformed
 
 
